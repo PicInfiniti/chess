@@ -362,11 +362,10 @@ info .online peers peer [dcr=w] {
 }
 
 info .online peers peer label {
-  font-size: pt;
+  font-size: 20pt;
   font-weight: 700;
-  color: #0003b9;
+  color: blue;
   border-radius: 100%;
-  background-color: #fff;
   font-family: chess;
   margin-right: 5px
 }

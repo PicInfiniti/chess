@@ -34492,13 +34492,13 @@ function Li(i) {
           }
       else if (v.opponent === null) {
         let l = $("peers peer").html(`. ${v.peers[c].username}`),
-          p = $("<label>").text("私");
+          p = $("<label>").text("♔");
         l.prepend(p)
       } else if (v.color === "w" && v.get_accepted) {
-        let l = $("<label dcr='w'>").text("白");
+        let l = $("<label dcr='w'>").text("♔");
         $("peers peer").html(` ${v.peers[c].username}`).prepend(l)
       } else if (v.color === "b" && v.get_accepted) {
-        let l = $("<label dcr='b'>").text("黑");
+        let l = $("<label dcr='b'>").text("♔");
         $("peers peer").html(` ${v.peers[c].username}`).prepend(l)
       }
     },
