@@ -34407,7 +34407,7 @@ var tt = Yo.exports;
 const at = Fi(tt);
 console.log("api");
 var st = new at;
-const ct = "http://127.0.0.1:5000";
+const ct = "https://gungi.pythonanywhere.com";
 var v = {};
 v = {
   peer: null,
