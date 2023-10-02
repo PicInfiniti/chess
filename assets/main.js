@@ -34677,7 +34677,7 @@ $("#board label").mousedown(function (i) {
           dst: v.click_pos.dst,
           type: o[0].type
         });
-        r.piece.name == "pawn" && r.dst[0] == 0 && bt("Admin", r), v.click_pos.src = null, v.click_pos.dst = null
+        r.piece.name == "pawn" && (r.dst[0] == 0 || r.dst[0] == 7) && bt("Admin", r), v.click_pos.src = null, v.click_pos.dst = null
       }
       break;
     default:
