@@ -33,7 +33,7 @@ a {
 }
 
 footer {
-  position: relative;
+  position: fixed;
   bottom: 0;
   left: 40%;
   margin-top: px;
@@ -41,19 +41,12 @@ footer {
   font-size: 20px
 }
 
-.about {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 20pt
-}
-
 container {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
   margin: auto;
-  width: 1500px;
+  width: 1400px;
   height: 910px;
   padding: 50px
 }
@@ -364,36 +357,35 @@ info .online peers peer [dcr=w] {
 info .online peers peer label {
   font-size: 20pt;
   font-weight: 700;
-  color: blue;
+  color: #00f;
   border-radius: 100%;
   font-family: chess;
   margin-right: 5px
 }
 
-info .chat-box {
+.chat-box {
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto auto;
-  width: 700px;
+  width: 500px;
   height: 300px;
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 0 0 10px #0003;
-  z-index: 3;
+  z-index: 5;
   text-align: center;
   opacity: .5;
-  width: 100%;
   display: flex;
   flex-direction: column
 }
 
-info .chat-box:hover {
+.chat-box:hover {
   opacity: 1
 }
 
-info .chat-box .chat-messages {
-  height: 235px;
+.chat-box .chat-messages {
+  height: 250px;
   overflow: auto;
   border: 1px solid #ccc;
   padding: 5px;
@@ -408,13 +400,13 @@ info .chat-box .chat-messages {
   font-family: Times New Roman, Times, serif, emoji
 }
 
-info .chat-box .chat-messages span {
+.chat-box .chat-messages span {
   font-size: 13pt;
   word-wrap: true
 }
 
-info .chat-box .chat-messages .btn-yes,
-info .chat-box .chat-messages .btn-no {
+.chat-box .chat-messages .btn-yes,
+.chat-box .chat-messages .btn-no {
   padding: 0;
   margin: 0;
   width: 30px;
@@ -427,15 +419,15 @@ info .chat-box .chat-messages .btn-no {
   border-radius: 3px
 }
 
-info .chat-box .chat-messages .btn-yes {
+.chat-box .chat-messages .btn-yes {
   background-color: #4caf50
 }
 
-info .chat-box .chat-messages .btn-no {
+.chat-box .chat-messages .btn-no {
   background-color: #f44336
 }
 
-info .chat-box .chat-messages ul {
+.chat-box .chat-messages ul {
   margin: 0;
   padding-left: 20px;
   display: none;
@@ -443,12 +435,12 @@ info .chat-box .chat-messages ul {
   word-break: break-all
 }
 
-info .chat-box .chat-messages .form h3 {
+.chat-box .chat-messages .form h3 {
   font-size: 20pt;
   margin: 10px
 }
 
-info .chat-box .chat-messages .form .usernameInput {
+.chat-box .chat-messages .form .usernameInput {
   margin: 10px;
   font-size: 15pt;
   background-color: transparent;
@@ -461,12 +453,12 @@ info .chat-box .chat-messages .form .usernameInput {
   font-weight: 700
 }
 
-info .chat-box .chat-input-container {
-  height: 40px;
+.chat-box .chat-input-container {
+  height: 50px;
   display: flex
 }
 
-info .chat-box .chat-input-container .chat-input {
+.chat-box .chat-input-container .chat-input {
   font-size: 15pt;
   flex: 1;
   border: 1px solid #ccc;
@@ -475,7 +467,7 @@ info .chat-box .chat-input-container .chat-input {
   font-family: Times New Roman, Times, serif, emoji
 }
 
-info .chat-box .chat-input-container .chat-send {
+.chat-box .chat-input-container .chat-send {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -486,7 +478,7 @@ info .chat-box .chat-input-container .chat-send {
   border-radius: 10px
 }
 
-info .chat-box .chat-input-container .emoji-button {
+.chat-box .chat-input-container .emoji-button {
   background-color: #fff;
   color: #000;
   border: none;
@@ -495,7 +487,7 @@ info .chat-box .chat-input-container .emoji-button {
   font-family: emoji
 }
 
-info .chat-box .chat-input-container unicode-emoji-picker {
+.chat-box .chat-input-container unicode-emoji-picker {
   bottom: 10px;
   left: 520px;
   position: absolute;
