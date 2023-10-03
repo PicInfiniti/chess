@@ -147,8 +147,8 @@ class qr extends HTMLElement {
       s = n.W.getBoundingClientRect(),
       l = n.T.getBoundingClientRect(),
       p = o[e.h] - s[e.position] - l[e.size] / 2,
-      g = t.O / s[e.size],
-      k = p / t.P * g;
+      u = t.O / s[e.size],
+      k = p / t.P * u;
     requestAnimationFrame(() => {
       this.viewport.scrollTo({
         [e.position]: k,
@@ -22994,9 +22994,9 @@ class an extends HTMLElement {
         }, {
           passive: !0
         }), this.groupFiltersElement.appendChild(s), t !== this.searchGroup) {
-        const g = Ui.content.cloneNode(!0),
-          k = g.querySelector(".group");
-        this.groupElements.set(t, k), this.resultsElement.appendChild(g)
+        const u = Ui.content.cloneNode(!0),
+          k = u.querySelector(".group");
+        this.groupElements.set(t, k), this.resultsElement.appendChild(u)
       }
     }
     this.attachShadow({
@@ -23024,10 +23024,10 @@ class an extends HTMLElement {
         for (const t of this.emojis[e]) {
           const s = Ki.content.cloneNode(!0),
             l = s.querySelector(".base-emoji");
-          this.baseEmojiElements.set(t, l), l.addEventListener("focusout", g => {
+          this.baseEmojiElements.set(t, l), l.addEventListener("focusout", u => {
             if (this.activeBaseEmoji) {
               const k = this.baseEmojiElements.get(this.activeBaseEmoji);
-              (!g.relatedTarget || !k.contains(g.relatedTarget)) && this.closeVariationsPanel()
+              (!u.relatedTarget || !k.contains(u.relatedTarget)) && this.closeVariationsPanel()
             }
           }, {
             passive: !0
@@ -23043,8 +23043,8 @@ class an extends HTMLElement {
               passive: !0
             }), t.variations) {
             l.classList.add("has-variations");
-            const g = Vi.content.cloneNode(!0),
-              k = g.querySelector(".variations");
+            const u = Vi.content.cloneNode(!0),
+              k = u.querySelector(".variations");
             this.baseEmojiVariationsElements.set(t, k);
             for (const d of [t, ...t.variations]) {
               d !== t && (d.base = t);
@@ -23061,7 +23061,7 @@ class an extends HTMLElement {
                 passive: !0
               }), k.appendChild(h)
             }
-            l.appendChild(g)
+            l.appendChild(u)
           }
           n.appendChild(s)
         }
@@ -23131,9 +23131,9 @@ class an extends HTMLElement {
       let l = e.offsetLeft + e.offsetWidth / 2;
       l < n ? l = n : l > t && (l = t), o.style.transform = `translateX(${l-s}px)`;
       const p = this.resultsElement.offsetTop + e.offsetTop,
-        g = p + o.offsetHeight,
+        u = p + o.offsetHeight,
         k = p - o.offsetHeight - this.baseEmojiVariationsGap,
-        d = g + e.offsetHeight + this.baseEmojiVariationsGap,
+        d = u + e.offsetHeight + this.baseEmojiVariationsGap,
         h = this.contentElement.viewport.scrollTop + this.resultsElement.offsetTop,
         M = this.contentElement.viewport.scrollTop + this.contentElement.viewport.offsetHeight;
       if (d > M && k >= h) o.style.top = `${-o.offsetHeight-this.baseEmojiVariationsGap}px`;
@@ -23419,8 +23419,8 @@ class dn {
       s = Math.floor(t * 2 ** 52),
       l = 2 ** 32,
       p = o << 31 | n + 1023 << 20 | s / l & 1048575,
-      g = s % l;
-    this._bufferBuilder.append(203), this.pack_int32(p), this.pack_int32(g)
+      u = s % l;
+    this._bufferBuilder.append(203), this.pack_int32(p), this.pack_int32(u)
   }
   pack_object(e) {
     const n = Object.keys(e).length;
@@ -23477,18 +23477,18 @@ function Ae(i, e, o) {
     t = n.addEventListener;
   n.addEventListener = function (l, p) {
     if (l !== e) return t.apply(this, arguments);
-    const g = k => {
+    const u = k => {
       const d = o(k);
       d && (p.handleEvent ? p.handleEvent(d) : p(d))
     };
-    return this._eventMap = this._eventMap || {}, this._eventMap[e] || (this._eventMap[e] = new Map), this._eventMap[e].set(p, g), t.apply(this, [l, g])
+    return this._eventMap = this._eventMap || {}, this._eventMap[e] || (this._eventMap[e] = new Map), this._eventMap[e].set(p, u), t.apply(this, [l, u])
   };
   const s = n.removeEventListener;
   n.removeEventListener = function (l, p) {
     if (l !== e || !this._eventMap || !this._eventMap[e]) return s.apply(this, arguments);
     if (!this._eventMap[e].has(p)) return s.apply(this, arguments);
-    const g = this._eventMap[e].get(p);
-    return this._eventMap[e].delete(p), this._eventMap[e].size === 0 && delete this._eventMap[e], Object.keys(this._eventMap).length === 0 && delete this._eventMap, s.apply(this, [l, g])
+    const u = this._eventMap[e].get(p);
+    return this._eventMap[e].delete(p), this._eventMap[e].size === 0 && delete this._eventMap[e], Object.keys(this._eventMap).length === 0 && delete this._eventMap, s.apply(this, [l, u])
   }, Object.defineProperty(n, "on" + e, {
     get() {
       return this["_on" + e]
@@ -23579,7 +23579,7 @@ function Qi(i, e) {
   if (!o.mediaDevices) return;
   const n = function (p) {
       if (typeof p != "object" || p.mandatory || p.optional) return p;
-      const g = {};
+      const u = {};
       return Object.keys(p).forEach(k => {
         if (k === "require" || k === "advanced" || k === "mediaSource") return;
         const d = typeof p[k] == "object" ? p[k] : {
@@ -23590,17 +23590,17 @@ function Qi(i, e) {
           return M ? M + T.charAt(0).toUpperCase() + T.slice(1) : T === "deviceId" ? "sourceId" : T
         };
         if (d.ideal !== void 0) {
-          g.optional = g.optional || [];
+          u.optional = u.optional || [];
           let M = {};
-          typeof d.ideal == "number" ? (M[h("min", k)] = d.ideal, g.optional.push(M), M = {}, M[h("max", k)] = d.ideal, g.optional.push(M)) : (M[h("", k)] = d.ideal, g.optional.push(M))
+          typeof d.ideal == "number" ? (M[h("min", k)] = d.ideal, u.optional.push(M), M = {}, M[h("max", k)] = d.ideal, u.optional.push(M)) : (M[h("", k)] = d.ideal, u.optional.push(M))
         }
-        d.exact !== void 0 && typeof d.exact != "number" ? (g.mandatory = g.mandatory || {}, g.mandatory[h("", k)] = d.exact) : ["min", "max"].forEach(M => {
-          d[M] !== void 0 && (g.mandatory = g.mandatory || {}, g.mandatory[h(M, k)] = d[M])
+        d.exact !== void 0 && typeof d.exact != "number" ? (u.mandatory = u.mandatory || {}, u.mandatory[h("", k)] = d.exact) : ["min", "max"].forEach(M => {
+          d[M] !== void 0 && (u.mandatory = u.mandatory || {}, u.mandatory[h(M, k)] = d[M])
         })
-      }), p.advanced && (g.optional = (g.optional || []).concat(p.advanced)), g
+      }), p.advanced && (u.optional = (u.optional || []).concat(p.advanced)), u
     },
-    t = function (p, g) {
-      if (e.version >= 61) return g(p);
+    t = function (p, u) {
+      if (e.version >= 61) return u(p);
       if (p = JSON.parse(JSON.stringify(p)), p && typeof p.audio == "object") {
         const k = function (d, h, M) {
           h in d && !(M in d) && (d[M] = d[h], delete d[h])
@@ -23623,12 +23623,12 @@ function Qi(i, e) {
               exact: T.deviceId
             } : {
               ideal: T.deviceId
-            }), p.video = n(p.video), bi("chrome: " + JSON.stringify(p)), g(p)
+            }), p.video = n(p.video), bi("chrome: " + JSON.stringify(p)), u(p)
           })
         }
         p.video = n(p.video)
       }
-      return bi("chrome: " + JSON.stringify(p)), g(p)
+      return bi("chrome: " + JSON.stringify(p)), u(p)
     },
     s = function (p) {
       return e.version >= 64 ? p : {
@@ -23652,17 +23652,17 @@ function Qi(i, e) {
         }
       }
     },
-    l = function (p, g, k) {
+    l = function (p, u, k) {
       t(p, d => {
-        o.webkitGetUserMedia(d, g, h => {
+        o.webkitGetUserMedia(d, u, h => {
           k && k(s(h))
         })
       })
     };
   if (o.getUserMedia = l.bind(o), o.mediaDevices.getUserMedia) {
     const p = o.mediaDevices.getUserMedia.bind(o.mediaDevices);
-    o.mediaDevices.getUserMedia = function (g) {
-      return t(g, k => p(k).then(d => {
+    o.mediaDevices.getUserMedia = function (u) {
+      return t(u, k => p(k).then(d => {
         if (k.audio && !d.getAudioTracks().length || k.video && !d.getVideoTracks().length) throw d.getTracks().forEach(h => {
           h.stop()
         }), new DOMException("", "NotFoundError");
@@ -23758,15 +23758,15 @@ function ir(i) {
         return this._senders = this._senders || [], this._senders.slice()
       };
       const t = i.RTCPeerConnection.prototype.addTrack;
-      i.RTCPeerConnection.prototype.addTrack = function (p, g) {
+      i.RTCPeerConnection.prototype.addTrack = function (p, u) {
         let k = t.apply(this, arguments);
         return k || (k = e(this, p), this._senders.push(k)), k
       };
       const s = i.RTCPeerConnection.prototype.removeTrack;
       i.RTCPeerConnection.prototype.removeTrack = function (p) {
         s.apply(this, arguments);
-        const g = this._senders.indexOf(p);
-        g !== -1 && this._senders.splice(g, 1)
+        const u = this._senders.indexOf(p);
+        u !== -1 && this._senders.splice(u, 1)
       }
     }
     const o = i.RTCPeerConnection.prototype.addStream;
@@ -23778,7 +23778,7 @@ function ir(i) {
     const n = i.RTCPeerConnection.prototype.removeStream;
     i.RTCPeerConnection.prototype.removeStream = function (s) {
       this._senders = this._senders || [], n.apply(this, [s]), s.getTracks().forEach(l => {
-        const p = this._senders.find(g => g.track === l);
+        const p = this._senders.find(u => u.track === l);
         p && this._senders.splice(this._senders.indexOf(p), 1)
       })
     }
@@ -23802,9 +23802,9 @@ function rr(i) {
     const [n, t, s] = arguments;
     if (arguments.length > 0 && typeof n == "function") return e.apply(this, arguments);
     if (e.length === 0 && (arguments.length === 0 || typeof n != "function")) return e.apply(this, []);
-    const l = function (g) {
+    const l = function (u) {
         const k = {};
-        return g.result().forEach(h => {
+        return u.result().forEach(h => {
           const M = {
             id: h.id,
             timestamp: h.timestamp,
@@ -23818,18 +23818,18 @@ function rr(i) {
           }), k[M.id] = M
         }), k
       },
-      p = function (g) {
-        return new Map(Object.keys(g).map(k => [k, g[k]]))
+      p = function (u) {
+        return new Map(Object.keys(u).map(k => [k, u[k]]))
       };
     if (arguments.length >= 2) {
-      const g = function (k) {
+      const u = function (k) {
         t(p(l(k)))
       };
-      return e.apply(this, [g, n])
+      return e.apply(this, [u, n])
     }
-    return new Promise((g, k) => {
+    return new Promise((u, k) => {
       e.apply(this, [function (d) {
-        g(p(l(d)))
+        u(p(l(d)))
       }, k])
     }).then(t, s)
   }
@@ -23884,8 +23884,8 @@ function tr(i) {
   i.RTCPeerConnection.prototype.addTrack = function (l, p) {
     if (!p) return e.apply(this, arguments);
     this._shimmedLocalStreams = this._shimmedLocalStreams || {};
-    const g = e.apply(this, arguments);
-    return this._shimmedLocalStreams[p.id] ? this._shimmedLocalStreams[p.id].indexOf(g) === -1 && this._shimmedLocalStreams[p.id].push(g) : this._shimmedLocalStreams[p.id] = [p, g], g
+    const u = e.apply(this, arguments);
+    return this._shimmedLocalStreams[p.id] ? this._shimmedLocalStreams[p.id].indexOf(u) === -1 && this._shimmedLocalStreams[p.id].push(u) : this._shimmedLocalStreams[p.id] = [p, u], u
   };
   const o = i.RTCPeerConnection.prototype.addStream;
   i.RTCPeerConnection.prototype.addStream = function (l) {
@@ -23894,8 +23894,8 @@ function tr(i) {
     });
     const p = this.getSenders();
     o.apply(this, arguments);
-    const g = this.getSenders().filter(k => p.indexOf(k) === -1);
-    this._shimmedLocalStreams[l.id] = [l].concat(g)
+    const u = this.getSenders().filter(k => p.indexOf(k) === -1);
+    this._shimmedLocalStreams[l.id] = [l].concat(u)
   };
   const n = i.RTCPeerConnection.prototype.removeStream;
   i.RTCPeerConnection.prototype.removeStream = function (l) {
@@ -23904,8 +23904,8 @@ function tr(i) {
   const t = i.RTCPeerConnection.prototype.removeTrack;
   i.RTCPeerConnection.prototype.removeTrack = function (l) {
     return this._shimmedLocalStreams = this._shimmedLocalStreams || {}, l && Object.keys(this._shimmedLocalStreams).forEach(p => {
-      const g = this._shimmedLocalStreams[p].indexOf(l);
-      g !== -1 && this._shimmedLocalStreams[p].splice(g, 1), this._shimmedLocalStreams[p].length === 1 && delete this._shimmedLocalStreams[p]
+      const u = this._shimmedLocalStreams[p].indexOf(l);
+      u !== -1 && this._shimmedLocalStreams[p].splice(u, 1), this._shimmedLocalStreams[p].length === 1 && delete this._shimmedLocalStreams[p]
     }), t.apply(this, arguments)
   }
 }
@@ -23989,10 +23989,10 @@ function ar(i, e) {
   i.RTCPeerConnection.prototype.setLocalDescription = function () {
     return !arguments.length || !arguments[0].type ? p.apply(this, arguments) : (arguments[0] = l(this, arguments[0]), p.apply(this, arguments))
   };
-  const g = Object.getOwnPropertyDescriptor(i.RTCPeerConnection.prototype, "localDescription");
+  const u = Object.getOwnPropertyDescriptor(i.RTCPeerConnection.prototype, "localDescription");
   Object.defineProperty(i.RTCPeerConnection.prototype, "localDescription", {
     get() {
-      const k = g.get.apply(this);
+      const k = u.get.apply(this);
       return k.type === "" ? k : s(this, k)
     }
   }), i.RTCPeerConnection.prototype.removeTrack = function (d) {
@@ -24048,8 +24048,8 @@ function cr(i, e) {
   if (o.getUserMedia = function (t, s, l) {
       ii("navigator.getUserMedia", "navigator.mediaDevices.getUserMedia"), o.mediaDevices.getUserMedia(t).then(s, l)
     }, !(e.version > 55 && "autoGainControl" in o.mediaDevices.getSupportedConstraints())) {
-    const t = function (l, p, g) {
-        p in l && !(g in l) && (l[g] = l[p], delete l[p])
+    const t = function (l, p, u) {
+        p in l && !(u in l) && (l[u] = l[p], delete l[p])
       },
       s = o.mediaDevices.getUserMedia.bind(o.mediaDevices);
     if (o.mediaDevices.getUserMedia = function (l) {
@@ -24113,20 +24113,20 @@ function No(i, e) {
     n = i.RTCPeerConnection.prototype.getStats;
   i.RTCPeerConnection.prototype.getStats = function () {
     const [s, l, p] = arguments;
-    return n.apply(this, [s || null]).then(g => {
+    return n.apply(this, [s || null]).then(u => {
       if (e.version < 53 && !l) try {
-        g.forEach(k => {
+        u.forEach(k => {
           k.type = o[k.type] || k.type
         })
       } catch (k) {
         if (k.name !== "TypeError") throw k;
-        g.forEach((d, h) => {
-          g.set(h, Object.assign({}, d, {
+        u.forEach((d, h) => {
+          u.set(h, Object.assign({}, d, {
             type: o[d.type] || d.type
           }))
         })
       }
-      return g
+      return u
     }).then(l, p)
   }
 }
@@ -24322,15 +24322,15 @@ function vr(i) {
       M = n.apply(this, [h]);
     return d ? (M.then(k, d), Promise.resolve()) : M
   };
-  let p = function (g, k, d) {
-    const h = t.apply(this, [g]);
+  let p = function (u, k, d) {
+    const h = t.apply(this, [u]);
     return d ? (h.then(k, d), Promise.resolve()) : h
   };
-  e.setLocalDescription = p, p = function (g, k, d) {
-    const h = s.apply(this, [g]);
+  e.setLocalDescription = p, p = function (u, k, d) {
+    const h = s.apply(this, [u]);
     return d ? (h.then(k, d), Promise.resolve()) : h
-  }, e.setRemoteDescription = p, p = function (g, k, d) {
-    const h = l.apply(this, [g]);
+  }, e.setRemoteDescription = p, p = function (u, k, d) {
+    const h = l.apply(this, [u]);
     return d ? (h.then(k, d), Promise.resolve()) : h
   }, e.addIceCandidate = p
 }
@@ -24617,12 +24617,12 @@ a=ice-pwd:` + o.password + `\r
       s = e.splitLines(o)[0].split(" ");
     n.profile = s[2];
     for (let p = 3; p < s.length; p++) {
-      const g = s[p],
-        k = e.matchPrefix(o, "a=rtpmap:" + g + " ")[0];
+      const u = s[p],
+        k = e.matchPrefix(o, "a=rtpmap:" + u + " ")[0];
       if (k) {
         const d = e.parseRtpMap(k),
-          h = e.matchPrefix(o, "a=fmtp:" + g + " ");
-        switch (d.parameters = h.length ? e.parseFmtp(h[0]) : {}, d.rtcpFeedback = e.matchPrefix(o, "a=rtcp-fb:" + g + " ").map(e.parseRtcpFb), n.codecs.push(d), d.name.toUpperCase()) {
+          h = e.matchPrefix(o, "a=fmtp:" + u + " ");
+        switch (d.parameters = h.length ? e.parseFmtp(h[0]) : {}, d.rtcpFeedback = e.matchPrefix(o, "a=rtcp-fb:" + u + " ").map(e.parseRtcpFb), n.codecs.push(d), d.name.toUpperCase()) {
           case "RED":
           case "ULPFEC":
             n.fecMechanisms.push(d.name.toUpperCase());
@@ -24635,8 +24635,8 @@ a=ice-pwd:` + o.password + `\r
     });
     const l = e.matchPrefix(o, "a=rtcp-fb:* ").map(e.parseRtcpFb);
     return n.codecs.forEach(p => {
-      l.forEach(g => {
-        p.rtcpFeedback.find(d => d.type === g.type && d.parameter === g.parameter) || p.rtcpFeedback.push(g)
+      l.forEach(u => {
+        p.rtcpFeedback.find(d => d.type === u.type && d.parameter === u.parameter) || p.rtcpFeedback.push(u)
       })
     }), n
   }, e.writeRtpDescription = function (o, n) {
@@ -24660,24 +24660,24 @@ a=ice-pwd:` + o.password + `\r
       s = t.fecMechanisms.indexOf("RED") !== -1,
       l = t.fecMechanisms.indexOf("ULPFEC") !== -1,
       p = e.matchPrefix(o, "a=ssrc:").map(M => e.parseSsrcMedia(M)).filter(M => M.attribute === "cname"),
-      g = p.length > 0 && p[0].ssrc;
+      u = p.length > 0 && p[0].ssrc;
     let k;
     const d = e.matchPrefix(o, "a=ssrc-group:FID").map(M => M.substring(17).split(" ").map(I => parseInt(I, 10)));
-    d.length > 0 && d[0].length > 1 && d[0][0] === g && (k = d[0][1]), t.codecs.forEach(M => {
+    d.length > 0 && d[0].length > 1 && d[0][0] === u && (k = d[0][1]), t.codecs.forEach(M => {
       if (M.name.toUpperCase() === "RTX" && M.parameters.apt) {
         let T = {
-          ssrc: g,
+          ssrc: u,
           codecPayloadType: parseInt(M.parameters.apt, 10)
         };
-        g && k && (T.rtx = {
+        u && k && (T.rtx = {
           ssrc: k
         }), n.push(T), s && (T = JSON.parse(JSON.stringify(T)), T.fec = {
-          ssrc: g,
+          ssrc: u,
           mechanism: l ? "red+ulpfec" : "red"
         }, n.push(T))
       }
-    }), n.length === 0 && g && n.push({
-      ssrc: g
+    }), n.length === 0 && u && n.push({
+      ssrc: u
     });
     let h = e.matchPrefix(o, "b=");
     return h.length && (h[0].indexOf("b=TIAS:") === 0 ? h = parseInt(h[0].substring(7), 10) : h[0].indexOf("b=AS:") === 0 ? h = parseInt(h[0].substring(5), 10) * 1e3 * .95 - 50 * 40 * 8 : h = void 0, n.forEach(M => {
@@ -24722,10 +24722,10 @@ a=ice-pwd:` + o.password + `\r
     };
     const p = e.matchPrefix(o, "a=sctpmap:");
     if (p.length > 0) {
-      const g = p[0].substring(10).split(" ");
+      const u = p[0].substring(10).split(" ");
       return {
-        port: parseInt(g[0], 10),
-        protocol: g[1],
+        port: parseInt(u[0], 10),
+        protocol: u[1],
         maxMessageSize: s
       }
     }
@@ -24845,35 +24845,35 @@ function go(i, e) {
   });
   const o = function (p) {
       if (!p || !p.sdp) return !1;
-      const g = Ge.splitSections(p.sdp);
-      return g.shift(), g.some(k => {
+      const u = Ge.splitSections(p.sdp);
+      return u.shift(), u.some(k => {
         const d = Ge.parseMLine(k);
         return d && d.kind === "application" && d.protocol.indexOf("SCTP") !== -1
       })
     },
     n = function (p) {
-      const g = p.sdp.match(/mozilla...THIS_IS_SDPARTA-(\d+)/);
-      if (g === null || g.length < 2) return -1;
-      const k = parseInt(g[1], 10);
+      const u = p.sdp.match(/mozilla...THIS_IS_SDPARTA-(\d+)/);
+      if (u === null || u.length < 2) return -1;
+      const k = parseInt(u[1], 10);
       return k !== k ? -1 : k
     },
     t = function (p) {
-      let g = 65536;
-      return e.browser === "firefox" && (e.version < 57 ? p === -1 ? g = 16384 : g = 2147483637 : e.version < 60 ? g = e.version === 57 ? 65535 : 65536 : g = 2147483637), g
+      let u = 65536;
+      return e.browser === "firefox" && (e.version < 57 ? p === -1 ? u = 16384 : u = 2147483637 : e.version < 60 ? u = e.version === 57 ? 65535 : 65536 : u = 2147483637), u
     },
-    s = function (p, g) {
+    s = function (p, u) {
       let k = 65536;
       e.browser === "firefox" && e.version === 57 && (k = 65535);
       const d = Ge.matchPrefix(p.sdp, "a=max-message-size:");
-      return d.length > 0 ? k = parseInt(d[0].substring(19), 10) : e.browser === "firefox" && g !== -1 && (k = 2147483637), k
+      return d.length > 0 ? k = parseInt(d[0].substring(19), 10) : e.browser === "firefox" && u !== -1 && (k = 2147483637), k
     },
     l = i.RTCPeerConnection.prototype.setRemoteDescription;
   i.RTCPeerConnection.prototype.setRemoteDescription = function () {
     if (this._sctp = null, e.browser === "chrome" && e.version >= 76) {
       const {
-        sdpSemantics: g
+        sdpSemantics: u
       } = this.getConfiguration();
-      g === "plan-b" && Object.defineProperty(this, "sctp", {
+      u === "plan-b" && Object.defineProperty(this, "sctp", {
         get() {
           return typeof this._sctp > "u" ? null : this._sctp
         },
@@ -24882,9 +24882,9 @@ function go(i, e) {
       })
     }
     if (o(arguments[0])) {
-      const g = n(arguments[0]),
-        k = t(g),
-        d = s(arguments[0], g);
+      const u = n(arguments[0]),
+        k = t(u),
+        d = s(arguments[0], u);
       let h;
       k === 0 && d === 0 ? h = Number.POSITIVE_INFINITY : k === 0 || d === 0 ? h = Math.max(k, d) : h = Math.min(k, d);
       const M = {};
@@ -24905,8 +24905,8 @@ function ho(i) {
     const s = n.send;
     n.send = function () {
       const p = arguments[0],
-        g = p.length || p.size || p.byteLength;
-      if (n.readyState === "open" && t.sctp && g > t.sctp.maxMessageSize) throw new TypeError("Message too large (can send a maximum of " + t.sctp.maxMessageSize + " bytes)");
+        u = p.length || p.size || p.byteLength;
+      if (n.readyState === "open" && t.sctp && u > t.sctp.maxMessageSize) throw new TypeError("Message too large (can send a maximum of " + t.sctp.maxMessageSize + " bytes)");
       return s.apply(n, arguments)
     }
   }
@@ -25261,7 +25261,7 @@ function D() {
     case 3:
       if (We >= x) return jo.slice(x - Co, (x += i) - Co);
       if (We == 0 && Ce < 140 && i < 32) {
-        let t = i < 16 ? Pr(i) : Cn(i);
+        let t = i < 16 ? _r(i) : Cn(i);
         if (t != null) return t
       }
       return jn(i);
@@ -25296,23 +25296,23 @@ function D() {
                 l = D(),
                 p = D();
               Jo(l, p);
-              let g = {};
+              let u = {};
               if (L.keyMap)
                 for (let k = 2; k < s; k++) {
                   let d = L.decodeKey(p[k - 2]);
-                  g[de(d)] = D()
+                  u[de(d)] = D()
                 } else
                   for (let k = 2; k < s; k++) {
                     let d = p[k - 2];
-                    g[de(d)] = D()
+                    u[de(d)] = D()
                   }
-              return g
+              return u
             } else if (i == vn) {
               let s = De(),
                 l = D();
               for (let p = 2; p < s; p++) Jo(l++, D());
               return D()
-            } else if (i == wi) return _n();
+            } else if (i == wi) return Pn();
             if (L.getShared && (ri(), t = O[i & 8191], t)) return t.read || (t.read = Vo(t)), t.read()
           }
         }
@@ -25393,7 +25393,7 @@ let jn = Wo;
 
 function Wo(i) {
   let e;
-  if (i < 16 && (e = Pr(i))) return e;
+  if (i < 16 && (e = _r(i))) return e;
   if (i > 64 && Uo) return Uo.decode(E.subarray(x, x += i));
   const o = x + i,
     n = [];
@@ -25411,8 +25411,8 @@ function Wo(i) {
       const s = E[x++] & 63,
         l = E[x++] & 63,
         p = E[x++] & 63;
-      let g = (t & 7) << 18 | s << 12 | l << 6 | p;
-      g > 65535 && (g -= 65536, n.push(g >>> 10 & 1023 | 55296), g = 56320 | g & 1023), n.push(g)
+      let u = (t & 7) << 18 | s << 12 | l << 6 | p;
+      u > 65535 && (u -= 65536, n.push(u >>> 10 & 1023 | 55296), u = 56320 | u & 1023), n.push(u)
     } else n.push(t);
     n.length >= 4096 && (e += J.apply(String, n), n.length = 0)
   }
@@ -25434,7 +25434,7 @@ function Cn(i) {
   return J.apply(String, o)
 }
 
-function Pr(i) {
+function _r(i) {
   if (i < 4)
     if (i < 2) {
       if (i === 0) return ""; {
@@ -25496,19 +25496,19 @@ function Pr(i) {
       let s = E[x++],
         l = E[x++],
         p = E[x++],
-        g = E[x++];
-      if ((s & 128) > 0 || (l & 128) > 0 || (p & 128) > 0 || (g & 128) > 0) {
+        u = E[x++];
+      if ((s & 128) > 0 || (l & 128) > 0 || (p & 128) > 0 || (u & 128) > 0) {
         x -= 8;
         return
       }
       if (i < 10) {
-        if (i === 8) return J(e, o, n, t, s, l, p, g); {
+        if (i === 8) return J(e, o, n, t, s, l, p, u); {
           let k = E[x++];
           if ((k & 128) > 0) {
             x -= 9;
             return
           }
-          return J(e, o, n, t, s, l, p, g, k)
+          return J(e, o, n, t, s, l, p, u, k)
         }
       } else if (i < 12) {
         let k = E[x++],
@@ -25517,13 +25517,13 @@ function Pr(i) {
           x -= 10;
           return
         }
-        if (i < 11) return J(e, o, n, t, s, l, p, g, k, d);
+        if (i < 11) return J(e, o, n, t, s, l, p, u, k, d);
         let h = E[x++];
         if ((h & 128) > 0) {
           x -= 11;
           return
         }
-        return J(e, o, n, t, s, l, p, g, k, d, h)
+        return J(e, o, n, t, s, l, p, u, k, d, h)
       } else {
         let k = E[x++],
           d = E[x++],
@@ -25534,13 +25534,13 @@ function Pr(i) {
           return
         }
         if (i < 14) {
-          if (i === 12) return J(e, o, n, t, s, l, p, g, k, d, h, M); {
+          if (i === 12) return J(e, o, n, t, s, l, p, u, k, d, h, M); {
             let T = E[x++];
             if ((T & 128) > 0) {
               x -= 13;
               return
             }
-            return J(e, o, n, t, s, l, p, g, k, d, h, M, T)
+            return J(e, o, n, t, s, l, p, u, k, d, h, M, T)
           }
         } else {
           let T = E[x++],
@@ -25549,13 +25549,13 @@ function Pr(i) {
             x -= 14;
             return
           }
-          if (i < 15) return J(e, o, n, t, s, l, p, g, k, d, h, M, T, I);
+          if (i < 15) return J(e, o, n, t, s, l, p, u, k, d, h, M, T, I);
           let R = E[x++];
           if ((R & 128) > 0) {
             x -= 15;
             return
           }
-          return J(e, o, n, t, s, l, p, g, k, d, h, M, T, I, R)
+          return J(e, o, n, t, s, l, p, u, k, d, h, M, T, I, R)
         }
       }
     }
@@ -25565,8 +25565,8 @@ function Pr(i) {
 function Sn(i) {
   return L.copyBuffers ? Uint8Array.prototype.slice.call(E, x, x += i) : E.subarray(x, x += i)
 }
-let _r = new Float32Array(1),
-  ao = new Uint8Array(_r.buffer, 0, 4);
+let Pr = new Float32Array(1),
+  ao = new Uint8Array(Pr.buffer, 0, 4);
 
 function An() {
   let i = E[x++],
@@ -25577,7 +25577,7 @@ function An() {
     let n = ((i & 3) << 8 | e) / 16777216;
     return i & 128 ? -n : n
   }
-  return ao[3] = i & 128 | (o >> 1) + 56, ao[2] = (i & 7) << 5 | e >> 3, ao[1] = e << 5, ao[0] = 0, _r[0]
+  return ao[3] = i & 128 | (o >> 1) + 56, ao[2] = (i & 7) << 5 | e >> 3, ao[1] = e << 5, ao[0] = 0, Pr[0]
 }
 new Array(4096);
 class Se {
@@ -25685,9 +25685,9 @@ const Mn = new Uint8Array(new Uint16Array([1]).buffer)[0] == 1,
     name: "BigInt64Array"
   } : BigInt64Array, Float32Array, Float64Array],
   En = [64, 68, 69, 70, 71, 72, 77, 78, 79, 85, 86];
-for (let i = 0; i < Ai.length; i++) Pn(Ai[i], En[i]);
+for (let i = 0; i < Ai.length; i++) _n(Ai[i], En[i]);
 
-function Pn(i, e) {
+function _n(i, e) {
   let o = "get" + i.name.slice(0, -5),
     n;
   typeof i == "function" ? n = i.BYTES_PER_ELEMENT : i = null;
@@ -25700,16 +25700,16 @@ function Pn(i, e) {
     } : l => {
       if (!i) throw new Error("Could not find typed array for code " + e);
       let p = new DataView(l.buffer, l.byteOffset, l.byteLength),
-        g = l.length >> s,
-        k = new i(g),
+        u = l.length >> s,
+        k = new i(u),
         d = p[o];
-      for (let h = 0; h < g; h++) k[h] = d.call(p, h << s, t);
+      for (let h = 0; h < u; h++) k[h] = d.call(p, h << s, t);
       return k
     }
   }
 }
 
-function _n() {
+function Pn() {
   let i = De(),
     e = x + D();
   for (let n = 2; n < i; n++) {
@@ -25752,12 +25752,12 @@ function Br(i) {
     s = jo,
     l = me,
     p = W,
-    g = new Uint8Array(E.slice(0, Ce)),
+    u = new Uint8Array(E.slice(0, Ce)),
     k = O,
     d = L,
     h = Je,
     M = i();
-  return Ce = e, x = o, Co = n, We = t, jo = s, me = l, W = p, E = g, Je = h, O = k, L = d, ee = new DataView(E.buffer, E.byteOffset, E.byteLength), M
+  return Ce = e, x = o, Co = n, We = t, jo = s, me = l, W = p, E = u, Je = h, O = k, L = d, ee = new DataView(E.buffer, E.byteOffset, E.byteLength), M
 }
 
 function $o() {
@@ -25777,11 +25777,11 @@ try {
 let qo, Rr;
 const xo = typeof globalThis == "object" && globalThis.Buffer,
   Qe = typeof xo < "u",
-  Po = Qe ? xo.allocUnsafeSlow : Uint8Array,
+  _o = Qe ? xo.allocUnsafeSlow : Uint8Array,
   xi = Qe ? xo : Uint8Array,
   Ti = 256,
   Mi = Qe ? 4294967296 : 2144337920;
-let _o, w, F, f = 0,
+let Po, w, F, f = 0,
   ve, V = null;
 const In = 61440,
   Bn = /[\u0080-\uFFFF]/,
@@ -25796,7 +25796,7 @@ class Rn extends $e {
       } : yo && yo.encodeInto ? function (a, c) {
         return yo.encodeInto(a, w.subarray(c)).written
       } : !1,
-      g = this,
+      u = this,
       k = e.structures || e.saveStructures,
       d = e.maxSharedStructures;
     if (d == null && (d = k ? 128 : 0), d > 8190) throw new Error("Maximum maxSharedStructure is 8190");
@@ -25819,11 +25819,11 @@ class Rn extends $e {
       }
       return this.encode(a, c)
     }, this.encode = function (a, c) {
-      if (w || (w = new Po(8192), F = new DataView(w.buffer, 0, 8192), f = 0), ve = w.length - 10, ve - f < 2048 ? (w = new Po(w.length), F = new DataView(w.buffer, 0, w.length), ve = w.length - 10, f = 0) : c === Ii && (f = f + 7 & 2147483640), o = f, g.useSelfDescribedHeader && (F.setUint32(f, 3654940416), f += 3), l = g.structuredClone ? new Map : null, g.bundleStrings && typeof a != "string" ? (V = [], V.size = 1 / 0) : V = null, n = g.structures, n) {
+      if (w || (w = new _o(8192), F = new DataView(w.buffer, 0, 8192), f = 0), ve = w.length - 10, ve - f < 2048 ? (w = new _o(w.length), F = new DataView(w.buffer, 0, w.length), ve = w.length - 10, f = 0) : c === Ii && (f = f + 7 & 2147483640), o = f, u.useSelfDescribedHeader && (F.setUint32(f, 3654940416), f += 3), l = u.structuredClone ? new Map : null, u.bundleStrings && typeof a != "string" ? (V = [], V.size = 1 / 0) : V = null, n = u.structures, n) {
         if (n.uninitialized) {
-          let u = g.getShared() || {};
-          g.structures = n = u.structures || [], g.sharedVersion = u.version;
-          let b = g.sharedValues = u.packedValues;
+          let g = u.getShared() || {};
+          u.structures = n = g.structures || [], u.sharedVersion = g.version;
+          let b = u.sharedValues = g.packedValues;
           if (b) {
             R = {};
             for (let A = 0, y = b.length; A < y; A++) R[b[A]] = A
@@ -25832,34 +25832,34 @@ class Rn extends $e {
         let m = n.length;
         if (m > d && !h && (m = d), !n.transitions) {
           n.transitions = Object.create(null);
-          for (let u = 0; u < m; u++) {
-            let b = n[u];
+          for (let g = 0; g < m; g++) {
+            let b = n[g];
             if (!b) continue;
             let A, y = n.transitions;
             for (let j = 0, C = b.length; j < C; j++) {
-              y[te] === void 0 && (y[te] = u);
+              y[te] === void 0 && (y[te] = g);
               let S = b[j];
               A = y[S], A || (A = y[S] = Object.create(null)), y = A
             }
-            y[te] = u | 1048576
+            y[te] = g | 1048576
           }
         }
         h || (n.nextId = m)
       }
       if (t && (t = !1), s = n || [], T = R, e.pack) {
         let m = new Map;
-        if (m.values = [], m.encoder = g, m.maxValues = e.maxPrivatePackedValues || (R ? 16 : 1 / 0), m.objectMap = R || !1, m.samplingPackedValues = M, ko(a, m), m.values.length > 0) {
+        if (m.values = [], m.encoder = u, m.maxValues = e.maxPrivatePackedValues || (R ? 16 : 1 / 0), m.objectMap = R || !1, m.samplingPackedValues = M, ko(a, m), m.values.length > 0) {
           w[f++] = 216, w[f++] = 51, ge(4);
-          let u = m.values;
-          _(u), ge(0), ge(0), T = Object.create(R || null);
-          for (let b = 0, A = u.length; b < A; b++) T[u[b]] = b
+          let g = m.values;
+          P(g), ge(0), ge(0), T = Object.create(R || null);
+          for (let b = 0, A = g.length; b < A; b++) T[g[b]] = b
         }
       }
-      _o = c & Bo;
+      Po = c & Bo;
       try {
-        if (_o) return;
-        if (_(a), V && _i(o, _), g.offset = f, l && l.idsToInsert) {
-          f += l.idsToInsert.length * 2, f > ve && we(f), g.offset = f;
+        if (Po) return;
+        if (P(a), V && Pi(o, P), u.offset = f, l && l.idsToInsert) {
+          f += l.idsToInsert.length * 2, f > ve && we(f), u.offset = f;
           let m = Gn(w.subarray(o, f), l.idsToInsert);
           return l = null, m
         }
@@ -25868,14 +25868,14 @@ class Rn extends $e {
         if (n) {
           if (Ee < 10 && Ee++, n.length > d && (n.length = d), Me > 1e4) n.transitions = null, Ee = 0, Me = 0, ae.length > 0 && (ae = []);
           else if (ae.length > 0 && !h) {
-            for (let m = 0, u = ae.length; m < u; m++) ae[m][te] = void 0;
+            for (let m = 0, g = ae.length; m < g; m++) ae[m][te] = void 0;
             ae = []
           }
         }
-        if (t && g.saveShared) {
-          g.structures.length > d && (g.structures = g.structures.slice(0, d));
+        if (t && u.saveShared) {
+          u.structures.length > d && (u.structures = u.structures.slice(0, d));
           let m = w.subarray(o, f);
-          return g.updateSharedData() === !1 ? g.encode(a) : m
+          return u.updateSharedData() === !1 ? u.encode(a) : m
         }
         c & Fn && (f = o)
       }
@@ -25883,11 +25883,11 @@ class Rn extends $e {
       let c = a && a.threshold || 4,
         m = this.pack ? a.maxPrivatePackedValues || 16 : 0;
       I || (I = this.sharedValues = []);
-      for (let [u, b] of M) b.count > c && (R[u] = m++, I.push(u), t = !0);
+      for (let [g, b] of M) b.count > c && (R[g] = m++, I.push(g), t = !0);
       for (; this.saveShared && this.updateSharedData() === !1;);
       M = null
     });
-    const _ = a => {
+    const P = a => {
         f > ve && (w = we(f));
         var c = typeof a,
           m;
@@ -25895,7 +25895,7 @@ class Rn extends $e {
           if (T) {
             let y = T[a];
             if (y >= 0) {
-              y < 16 ? w[f++] = y + 224 : (w[f++] = 198, y & 1 ? _(15 - y >> 1) : _(y - 16 >> 1));
+              y < 16 ? w[f++] = y + 224 : (w[f++] = 198, y & 1 ? P(15 - y >> 1) : P(y - 16 >> 1));
               return
             } else if (M && !e.pack) {
               let j = M.get(a);
@@ -25904,22 +25904,22 @@ class Rn extends $e {
               })
             }
           }
-          let u = a.length;
-          if (V && u >= 4 && u < 1024) {
-            if ((V.size += u) > In) {
+          let g = a.length;
+          if (V && g >= 4 && g < 1024) {
+            if ((V.size += g) > In) {
               let j, C = (V[0] ? V[0].length * 3 + V[1].length : 0) + 10;
-              f + C > ve && (w = we(f + C)), w[f++] = 217, w[f++] = 223, w[f++] = 249, w[f++] = V.position ? 132 : 130, w[f++] = 26, j = f - o, f += 4, V.position && _i(o, _), V = ["", ""], V.size = 0, V.position = j
+              f + C > ve && (w = we(f + C)), w[f++] = 217, w[f++] = 223, w[f++] = 249, w[f++] = V.position ? 132 : 130, w[f++] = 26, j = f - o, f += 4, V.position && Pi(o, P), V = ["", ""], V.size = 0, V.position = j
             }
             let y = Bn.test(a);
-            V[y ? 0 : 1] += a, w[f++] = y ? 206 : 207, _(u);
+            V[y ? 0 : 1] += a, w[f++] = y ? 206 : 207, P(g);
             return
           }
           let b;
-          u < 32 ? b = 1 : u < 256 ? b = 2 : u < 65536 ? b = 3 : b = 5;
-          let A = u * 3;
-          if (f + A > ve && (w = we(f + A)), u < 64 || !p) {
+          g < 32 ? b = 1 : g < 256 ? b = 2 : g < 65536 ? b = 3 : b = 5;
+          let A = g * 3;
+          if (f + A > ve && (w = we(f + A)), g < 64 || !p) {
             let y, j, C, S = f + b;
-            for (y = 0; y < u; y++) j = a.charCodeAt(y), j < 128 ? w[S++] = j : j < 2048 ? (w[S++] = j >> 6 | 192, w[S++] = j & 63 | 128) : (j & 64512) === 55296 && ((C = a.charCodeAt(y + 1)) & 64512) === 56320 ? (j = 65536 + ((j & 1023) << 10) + (C & 1023), y++, w[S++] = j >> 18 | 240, w[S++] = j >> 12 & 63 | 128, w[S++] = j >> 6 & 63 | 128, w[S++] = j & 63 | 128) : (w[S++] = j >> 12 | 224, w[S++] = j >> 6 & 63 | 128, w[S++] = j & 63 | 128);
+            for (y = 0; y < g; y++) j = a.charCodeAt(y), j < 128 ? w[S++] = j : j < 2048 ? (w[S++] = j >> 6 | 192, w[S++] = j & 63 | 128) : (j & 64512) === 55296 && ((C = a.charCodeAt(y + 1)) & 64512) === 56320 ? (j = 65536 + ((j & 1023) << 10) + (C & 1023), y++, w[S++] = j >> 18 | 240, w[S++] = j >> 12 & 63 | 128, w[S++] = j >> 6 & 63 | 128, w[S++] = j & 63 | 128) : (w[S++] = j >> 12 | 224, w[S++] = j >> 6 & 63 | 128, w[S++] = j & 63 | 128);
             m = S - f - b
           } else m = p(a, f + b, A);
           m < 24 ? w[f++] = 96 | m : m < 256 ? (b < 2 && w.copyWithin(f + 2, f + 1, f + 1 + m), w[f++] = 120, w[f++] = m) : m < 65536 ? (b < 3 && w.copyWithin(f + 3, f + 2, f + 2 + m), w[f++] = 121, w[f++] = m >> 8, w[f++] = m & 255) : (b < 5 && w.copyWithin(f + 5, f + 3, f + 3 + m), w[f++] = 122, F.setUint32(f, m), f += 4), f += m
@@ -25927,11 +25927,11 @@ class Rn extends $e {
           if (!this.alwaysUseFloat && a >>> 0 === a) a < 24 ? w[f++] = a : a < 256 ? (w[f++] = 24, w[f++] = a) : a < 65536 ? (w[f++] = 25, w[f++] = a >> 8, w[f++] = a & 255) : (w[f++] = 26, F.setUint32(f, a), f += 4);
           else if (!this.alwaysUseFloat && a >> 0 === a) a >= -24 ? w[f++] = 31 - a : a >= -256 ? (w[f++] = 56, w[f++] = ~a) : a >= -65536 ? (w[f++] = 57, F.setUint16(f, ~a), f += 2) : (w[f++] = 58, F.setUint32(f, ~a), f += 4);
         else {
-          let u;
-          if ((u = this.useFloat32) > 0 && a < 4294967296 && a >= -2147483648) {
+          let g;
+          if ((g = this.useFloat32) > 0 && a < 4294967296 && a >= -2147483648) {
             w[f++] = 250, F.setFloat32(f, a);
             let b;
-            if (u < 4 || (b = a * ni[(w[f] & 127) << 1 | w[f + 1] >> 7]) >> 0 === b) {
+            if (g < 4 || (b = a * ni[(w[f] & 127) << 1 | w[f + 1] >> 7]) >> 0 === b) {
               f += 4;
               return
             } else f--
@@ -25953,33 +25953,33 @@ class Rn extends $e {
                 offset: f - o
               })
             }
-            let u = a.constructor;
-            if (u === Object) se(a, !0);
-            else if (u === Array) {
+            let g = a.constructor;
+            if (g === Object) se(a, !0);
+            else if (g === Array) {
               m = a.length, m < 24 ? w[f++] = 128 | m : ge(m);
-              for (let b = 0; b < m; b++) _(a[b])
-            } else if (u === Map)
-              if ((this.mapsAsObjects ? this.useTag259ForMaps !== !1 : this.useTag259ForMaps) && (w[f++] = 217, w[f++] = 1, w[f++] = 3), m = a.size, m < 24 ? w[f++] = 160 | m : m < 256 ? (w[f++] = 184, w[f++] = m) : m < 65536 ? (w[f++] = 185, w[f++] = m >> 8, w[f++] = m & 255) : (w[f++] = 186, F.setUint32(f, m), f += 4), g.keyMap)
-                for (let [b, A] of a) _(g.encodeKey(b)), _(A);
+              for (let b = 0; b < m; b++) P(a[b])
+            } else if (g === Map)
+              if ((this.mapsAsObjects ? this.useTag259ForMaps !== !1 : this.useTag259ForMaps) && (w[f++] = 217, w[f++] = 1, w[f++] = 3), m = a.size, m < 24 ? w[f++] = 160 | m : m < 256 ? (w[f++] = 184, w[f++] = m) : m < 65536 ? (w[f++] = 185, w[f++] = m >> 8, w[f++] = m & 255) : (w[f++] = 186, F.setUint32(f, m), f += 4), u.keyMap)
+                for (let [b, A] of a) P(u.encodeKey(b)), P(A);
               else
-                for (let [b, A] of a) _(b), _(A);
+                for (let [b, A] of a) P(b), P(A);
             else {
               for (let b = 0, A = qo.length; b < A; b++) {
                 let y = Rr[b];
                 if (a instanceof y) {
                   let j = qo[b],
                     C = j.tag;
-                  C == null && (C = j.getTag && j.getTag.call(this, a)), C < 24 ? w[f++] = 192 | C : C < 256 ? (w[f++] = 216, w[f++] = C) : C < 65536 ? (w[f++] = 217, w[f++] = C >> 8, w[f++] = C & 255) : C > -1 && (w[f++] = 218, F.setUint32(f, C), f += 4), j.encode.call(this, a, _, we);
+                  C == null && (C = j.getTag && j.getTag.call(this, a)), C < 24 ? w[f++] = 192 | C : C < 256 ? (w[f++] = 216, w[f++] = C) : C < 65536 ? (w[f++] = 217, w[f++] = C >> 8, w[f++] = C & 255) : C > -1 && (w[f++] = 218, F.setUint32(f, C), f += 4), j.encode.call(this, a, P, we);
                   return
                 }
               }
               if (a[Symbol.iterator]) {
-                if (_o) {
+                if (Po) {
                   let b = new Error("Iterable should be serialized as iterator");
                   throw b.iteratorNotHandled = !0, b
                 }
                 w[f++] = 159;
-                for (let b of a) _(b);
+                for (let b of a) P(b);
                 w[f++] = 255;
                 return
               }
@@ -25989,7 +25989,7 @@ class Rn extends $e {
               }
               if (this.useToJSON && a.toJSON) {
                 const b = a.toJSON();
-                if (b !== a) return _(b)
+                if (b !== a) return P(b)
               }
               se(a, !a.hasOwnProperty)
             }
@@ -26007,23 +26007,23 @@ class Rn extends $e {
       se = this.useRecords === !1 ? this.variableMapSize ? a => {
         let c = Object.keys(a),
           m = Object.values(a),
-          u = c.length;
-        if (u < 24 ? w[f++] = 160 | u : u < 256 ? (w[f++] = 184, w[f++] = u) : u < 65536 ? (w[f++] = 185, w[f++] = u >> 8, w[f++] = u & 255) : (w[f++] = 186, F.setUint32(f, u), f += 4), g.keyMap)
-          for (let b = 0; b < u; b++) _(g.encodeKey(c[b])), _(m[b]);
+          g = c.length;
+        if (g < 24 ? w[f++] = 160 | g : g < 256 ? (w[f++] = 184, w[f++] = g) : g < 65536 ? (w[f++] = 185, w[f++] = g >> 8, w[f++] = g & 255) : (w[f++] = 186, F.setUint32(f, g), f += 4), u.keyMap)
+          for (let b = 0; b < g; b++) P(u.encodeKey(c[b])), P(m[b]);
         else
-          for (let b = 0; b < u; b++) _(c[b]), _(m[b])
+          for (let b = 0; b < g; b++) P(c[b]), P(m[b])
       } : (a, c) => {
         w[f++] = 185;
         let m = f - o;
         f += 2;
-        let u = 0;
-        if (g.keyMap)
-          for (let b in a)(c || a.hasOwnProperty(b)) && (_(g.encodeKey(b)), _(a[b]), u++);
+        let g = 0;
+        if (u.keyMap)
+          for (let b in a)(c || a.hasOwnProperty(b)) && (P(u.encodeKey(b)), P(a[b]), g++);
         else
-          for (let b in a)(c || a.hasOwnProperty(b)) && (_(b), _(a[b]), u++);
-        w[m++ + o] = u >> 8, w[m + o] = u & 255
+          for (let b in a)(c || a.hasOwnProperty(b)) && (P(b), P(a[b]), g++);
+        w[m++ + o] = g >> 8, w[m + o] = g & 255
       } : (a, c) => {
-        let m, u = s.transitions || (s.transitions = Object.create(null)),
+        let m, g = s.transitions || (s.transitions = Object.create(null)),
           b = 0,
           A = 0,
           y, j;
@@ -26031,23 +26031,23 @@ class Rn extends $e {
           j = Object.keys(a).map(S => this.encodeKey(S)), A = j.length;
           for (let S = 0; S < A; S++) {
             let H = j[S];
-            m = u[H], m || (m = u[H] = Object.create(null), b++), u = m
+            m = g[H], m || (m = g[H] = Object.create(null), b++), g = m
           }
         } else
-          for (let S in a)(c || a.hasOwnProperty(S)) && (m = u[S], m || (u[te] & 1048576 && (y = u[te] & 65535), m = u[S] = Object.create(null), b++), u = m, A++);
-        let C = u[te];
+          for (let S in a)(c || a.hasOwnProperty(S)) && (m = g[S], m || (g[te] & 1048576 && (y = g[te] & 65535), m = g[S] = Object.create(null), b++), g = m, A++);
+        let C = g[te];
         if (C !== void 0) C &= 65535, w[f++] = 217, w[f++] = C >> 8 | 224, w[f++] = C & 255;
-        else if (j || (j = u.__keys__ || (u.__keys__ = Object.keys(a))), y === void 0 ? (C = s.nextId++, C || (C = 0, s.nextId = 1), C >= Ti && (s.nextId = (C = d) + 1)) : C = y, s[C] = j, C < d) {
-          w[f++] = 217, w[f++] = C >> 8 | 224, w[f++] = C & 255, u = s.transitions;
-          for (let S = 0; S < A; S++)(u[te] === void 0 || u[te] & 1048576) && (u[te] = C), u = u[j[S]];
-          u[te] = C | 1048576, t = !0
+        else if (j || (j = g.__keys__ || (g.__keys__ = Object.keys(a))), y === void 0 ? (C = s.nextId++, C || (C = 0, s.nextId = 1), C >= Ti && (s.nextId = (C = d) + 1)) : C = y, s[C] = j, C < d) {
+          w[f++] = 217, w[f++] = C >> 8 | 224, w[f++] = C & 255, g = s.transitions;
+          for (let S = 0; S < A; S++)(g[te] === void 0 || g[te] & 1048576) && (g[te] = C), g = g[j[S]];
+          g[te] = C | 1048576, t = !0
         } else {
-          if (u[te] = C, F.setUint32(f, 3655335680), f += 3, b && (Me += Ee * b), ae.length >= Ti - d && (ae.shift()[te] = void 0), ae.push(u), ge(A + 2), _(57344 + C), _(j), c === null) return;
-          for (let S in a)(c || a.hasOwnProperty(S)) && _(a[S]);
+          if (g[te] = C, F.setUint32(f, 3655335680), f += 3, b && (Me += Ee * b), ae.length >= Ti - d && (ae.shift()[te] = void 0), ae.push(g), ge(A + 2), P(57344 + C), P(j), c === null) return;
+          for (let S in a)(c || a.hasOwnProperty(S)) && P(a[S]);
           return
         }
         if (A < 24 ? w[f++] = 128 | A : ge(A), c !== null)
-          for (let S in a)(c || a.hasOwnProperty(S)) && _(a[S])
+          for (let S in a)(c || a.hasOwnProperty(S)) && P(a[S])
       },
       we = a => {
         let c;
@@ -26055,7 +26055,7 @@ class Rn extends $e {
           if (a - o > Mi) throw new Error("Encoded buffer would be larger than maximum buffer size");
           c = Math.min(Mi, Math.round(Math.max((a - o) * (a > 67108864 ? 1.25 : 2), 4194304) / 4096) * 4096)
         } else c = (Math.max(a - o << 2, w.length - 1) >> 12) + 1 << 12;
-        let m = new Po(c);
+        let m = new _o(c);
         return F = new DataView(m.buffer, 0, c), w.copy ? w.copy(m, 0, o, a) : m.set(w.slice(o, a)), f -= o, o = 0, ve = m.length - 10, w = m
       };
     let fe = 100,
@@ -26067,56 +26067,56 @@ class Rn extends $e {
     };
 
     function* ke(a, c, m) {
-      let u = a.constructor;
-      if (u === Object) {
-        let b = g.useRecords !== !1;
+      let g = a.constructor;
+      if (g === Object) {
+        let b = u.useRecords !== !1;
         b ? se(a, null) : Ei(Object.keys(a).length, 160);
         for (let A in a) {
           let y = a[A];
-          b || _(A), y && typeof y == "object" ? c[A] ? yield* ke(y, c[A]): yield* Pe(y, c, A): _(y)
+          b || P(A), y && typeof y == "object" ? c[A] ? yield* ke(y, c[A]): yield* _e(y, c, A): P(y)
         }
-      } else if (u === Array) {
+      } else if (g === Array) {
         let b = a.length;
         ge(b);
         for (let A = 0; A < b; A++) {
           let y = a[A];
-          y && (typeof y == "object" || f - o > fe) ? c.element ? yield* ke(y, c.element): yield* Pe(y, c, "element"): _(y)
+          y && (typeof y == "object" || f - o > fe) ? c.element ? yield* ke(y, c.element): yield* _e(y, c, "element"): P(y)
         }
       } else if (a[Symbol.iterator]) {
         w[f++] = 159;
-        for (let b of a) b && (typeof b == "object" || f - o > fe) ? c.element ? yield* ke(b, c.element): yield* Pe(b, c, "element"): _(b);
+        for (let b of a) b && (typeof b == "object" || f - o > fe) ? c.element ? yield* ke(b, c.element): yield* _e(b, c, "element"): P(b);
         w[f++] = 255
-      } else Io(a) ? (Ei(a.size, 64), yield w.subarray(o, f), yield a, Q()) : a[Symbol.asyncIterator] ? (w[f++] = 159, yield w.subarray(o, f), yield a, Q(), w[f++] = 255) : _(a);
+      } else Io(a) ? (Ei(a.size, 64), yield w.subarray(o, f), yield a, Q()) : a[Symbol.asyncIterator] ? (w[f++] = 159, yield w.subarray(o, f), yield a, Q(), w[f++] = 255) : P(a);
       m && f > o ? yield w.subarray(o, f): f - o > fe && (yield w.subarray(o, f), Q())
     }
 
-    function* Pe(a, c, m) {
-      let u = f - o;
+    function* _e(a, c, m) {
+      let g = f - o;
       try {
-        _(a), f - o > fe && (yield w.subarray(o, f), Q())
+        P(a), f - o > fe && (yield w.subarray(o, f), Q())
       } catch (b) {
-        if (b.iteratorNotHandled) c[m] = {}, f = o + u, yield* ke.call(this, a, c[m]);
+        if (b.iteratorNotHandled) c[m] = {}, f = o + g, yield* ke.call(this, a, c[m]);
         else throw b
       }
     }
 
     function Q() {
-      fe = io, g.encode(null, Bo)
+      fe = io, u.encode(null, Bo)
     }
 
     function N(a, c, m) {
-      return c && c.chunkThreshold ? fe = io = c.chunkThreshold : fe = 100, a && typeof a == "object" ? (g.encode(null, Bo), m(a, g.iterateProperties || (g.iterateProperties = {}), !0)) : [g.encode(a)]
+      return c && c.chunkThreshold ? fe = io = c.chunkThreshold : fe = 100, a && typeof a == "object" ? (u.encode(null, Bo), m(a, u.iterateProperties || (u.iterateProperties = {}), !0)) : [u.encode(a)]
     }
     async function* r(a, c) {
       for (let m of ke(a, c, !0)) {
-        let u = m.constructor;
-        if (u === xi || u === Uint8Array) yield m;
+        let g = m.constructor;
+        if (g === xi || g === Uint8Array) yield m;
         else if (Io(m)) {
           let b = m.stream().getReader(),
             A;
           for (; !(A = await b.read()).done;) yield A.value
         } else if (m[Symbol.asyncIterator])
-          for await (let b of m) Q(), b ? yield* r(b, c.async || (c.async = {})): yield g.encode(b);
+          for await (let b of m) Q(), b ? yield* r(b, c.async || (c.async = {})): yield u.encode(b);
         else yield m
       }
     }
@@ -26219,14 +26219,14 @@ qo = [{
   }
 }, {
   encode(i, e, o) {
-    Pi(i, o)
+    _i(i, o)
   }
 }, {
   getTag(i) {
     if (i.constructor === Uint8Array && (this.tagUint8Array || Qe && this.tagUint8Array !== !1)) return 64
   },
   encode(i, e, o) {
-    Pi(i, o)
+    _i(i, o)
   }
 }, ue(68, 1), ue(69, 2), ue(70, 4), ue(71, 8), ue(72, 1), ue(77, 2), ue(78, 4), ue(79, 8), ue(85, 4), ue(86, 8), {
   encode(i, e) {
@@ -26258,7 +26258,7 @@ function ue(i, e) {
   }
 }
 
-function Pi(i, e) {
+function _i(i, e) {
   let o = i.byteLength;
   o < 24 ? w[f++] = 64 + o : o < 256 ? (w[f++] = 88, w[f++] = o) : o < 65536 ? (w[f++] = 89, w[f++] = o >> 8, w[f++] = o & 255) : (w[f++] = 90, F.setUint32(f, o), f += 4), f + o >= w.length && e(f + o), w.set(i.buffer ? i : new Uint8Array(i), f), f += o
 }
@@ -26281,7 +26281,7 @@ function Gn(i, e) {
   return i
 }
 
-function _i(i, e) {
+function Pi(i, e) {
   F.setUint32(V.position + i, f - V.position - i + 1);
   let o = V;
   V = null, e(o[0]), e(o[1])
@@ -26314,11 +26314,11 @@ class Lr {
         l = 0;
       for (; l < n;) {
         const p = Math.min(n, l + this.chunkedMTU),
-          g = e.slice(l, p),
+          u = e.slice(l, p),
           k = {
             __peerData: this._dataCount,
             n: s,
-            data: g,
+            data: u,
             total: t
           };
         o.push(k), l = p, s++
@@ -26476,7 +26476,7 @@ class Un {
     this._logLevel = le.Disabled
   }
 }
-var P = new Un,
+var _ = new Un,
   si = {},
   Kn = Object.prototype.hasOwnProperty,
   oe = "~";
@@ -26525,46 +26525,46 @@ X.prototype.listenerCount = function (e) {
 X.prototype.emit = function (e, o, n, t, s, l) {
   var p = oe ? oe + e : e;
   if (!this._events[p]) return !1;
-  var g = this._events[p],
+  var u = this._events[p],
     k = arguments.length,
     d, h;
-  if (g.fn) {
-    switch (g.once && this.removeListener(e, g.fn, void 0, !0), k) {
+  if (u.fn) {
+    switch (u.once && this.removeListener(e, u.fn, void 0, !0), k) {
       case 1:
-        return g.fn.call(g.context), !0;
+        return u.fn.call(u.context), !0;
       case 2:
-        return g.fn.call(g.context, o), !0;
+        return u.fn.call(u.context, o), !0;
       case 3:
-        return g.fn.call(g.context, o, n), !0;
+        return u.fn.call(u.context, o, n), !0;
       case 4:
-        return g.fn.call(g.context, o, n, t), !0;
+        return u.fn.call(u.context, o, n, t), !0;
       case 5:
-        return g.fn.call(g.context, o, n, t, s), !0;
+        return u.fn.call(u.context, o, n, t, s), !0;
       case 6:
-        return g.fn.call(g.context, o, n, t, s, l), !0
+        return u.fn.call(u.context, o, n, t, s, l), !0
     }
     for (h = 1, d = new Array(k - 1); h < k; h++) d[h - 1] = arguments[h];
-    g.fn.apply(g.context, d)
+    u.fn.apply(u.context, d)
   } else {
-    var M = g.length,
+    var M = u.length,
       T;
-    for (h = 0; h < M; h++) switch (g[h].once && this.removeListener(e, g[h].fn, void 0, !0), k) {
+    for (h = 0; h < M; h++) switch (u[h].once && this.removeListener(e, u[h].fn, void 0, !0), k) {
       case 1:
-        g[h].fn.call(g[h].context);
+        u[h].fn.call(u[h].context);
         break;
       case 2:
-        g[h].fn.call(g[h].context, o);
+        u[h].fn.call(u[h].context, o);
         break;
       case 3:
-        g[h].fn.call(g[h].context, o, n);
+        u[h].fn.call(u[h].context, o, n);
         break;
       case 4:
-        g[h].fn.call(g[h].context, o, n, t);
+        u[h].fn.call(u[h].context, o, n, t);
         break;
       default:
         if (!d)
           for (T = 1, d = new Array(k - 1); T < k; T++) d[T - 1] = arguments[T];
-        g[h].fn.apply(g[h].context, d)
+        u[h].fn.apply(u[h].context, d)
     }
   }
   return !0
@@ -26582,8 +26582,8 @@ X.prototype.removeListener = function (e, o, n, t) {
   var l = this._events[s];
   if (l.fn) l.fn === o && (!t || l.once) && (!n || l.context === n) && vo(this, s);
   else {
-    for (var p = 0, g = [], k = l.length; p < k; p++)(l[p].fn !== o || t && !l[p].once || n && l[p].context !== n) && g.push(l[p]);
-    g.length ? this._events[s] = g.length === 1 ? g[0] : g : vo(this, s)
+    for (var p = 0, u = [], k = l.length; p < k; p++)(l[p].fn !== o || t && !l[p].once || n && l[p].context !== n) && u.push(l[p]);
+    u.length ? this._events[s] = u.length === 1 ? u[0] : u : vo(this, s)
   }
   return this
 };
@@ -26646,16 +26646,16 @@ class Wn extends si.EventEmitter {
     this._socket || !this._disconnected || (this._socket = new WebSocket(n + "&version=" + ci.version), this._disconnected = !1, this._socket.onmessage = t => {
       let s;
       try {
-        s = JSON.parse(t.data), P.log("Server message received:", s)
+        s = JSON.parse(t.data), _.log("Server message received:", s)
       } catch {
-        P.log("Invalid server message", t.data);
+        _.log("Invalid server message", t.data);
         return
       }
       this.emit(he.Message, s)
     }, this._socket.onclose = t => {
-      this._disconnected || (P.log("Socket closed.", t), this._cleanup(), this._disconnected = !0, this.emit(he.Disconnected))
+      this._disconnected || (_.log("Socket closed.", t), this._cleanup(), this._disconnected = !0, this.emit(he.Disconnected))
     }, this._socket.onopen = () => {
-      this._disconnected || (this._sendQueuedMessages(), P.log("Socket open"), this._scheduleHeartbeat())
+      this._disconnected || (this._sendQueuedMessages(), _.log("Socket open"), this._scheduleHeartbeat())
     })
   }
   _scheduleHeartbeat() {
@@ -26665,7 +26665,7 @@ class Wn extends si.EventEmitter {
   }
   _sendHeartbeat() {
     if (!this._wsOpen()) {
-      P.log("Cannot send heartbeat, because socket closed");
+      _.log("Cannot send heartbeat, because socket closed");
       return
     }
     const e = JSON.stringify({
@@ -26718,7 +26718,7 @@ class Nr {
     } else this.handleSDP("OFFER", e.sdp)
   }
   _startPeerConnection() {
-    P.log("Creating RTCPeerConnection.");
+    _.log("Creating RTCPeerConnection.");
     const e = new RTCPeerConnection(this.connection.provider.options.config);
     return this._setupListeners(e), e
   }
@@ -26727,8 +26727,8 @@ class Nr {
       n = this.connection.connectionId,
       t = this.connection.type,
       s = this.connection.provider;
-    P.log("Listening for ICE candidates."), e.onicecandidate = l => {
-      !l.candidate || !l.candidate.candidate || (P.log(`Received ICE candidates for ${o}:`, l.candidate), s.socket.send({
+    _.log("Listening for ICE candidates."), e.onicecandidate = l => {
+      !l.candidate || !l.candidate.candidate || (_.log(`Received ICE candidates for ${o}:`, l.candidate), s.socket.send({
         type: q.Candidate,
         payload: {
           candidate: l.candidate,
@@ -26740,35 +26740,35 @@ class Nr {
     }, e.oniceconnectionstatechange = () => {
       switch (e.iceConnectionState) {
         case "failed":
-          P.log("iceConnectionState is failed, closing connections to " + o), this.connection.emitError(Ye.NegotiationFailed, "Negotiation of connection to " + o + " failed."), this.connection.close();
+          _.log("iceConnectionState is failed, closing connections to " + o), this.connection.emitError(Ye.NegotiationFailed, "Negotiation of connection to " + o + " failed."), this.connection.close();
           break;
         case "closed":
-          P.log("iceConnectionState is closed, closing connections to " + o), this.connection.emitError(Ye.ConnectionClosed, "Connection to " + o + " closed."), this.connection.close();
+          _.log("iceConnectionState is closed, closing connections to " + o), this.connection.emitError(Ye.ConnectionClosed, "Connection to " + o + " closed."), this.connection.close();
           break;
         case "disconnected":
-          P.log("iceConnectionState changed to disconnected on the connection with " + o);
+          _.log("iceConnectionState changed to disconnected on the connection with " + o);
           break;
         case "completed":
           e.onicecandidate = () => {};
           break
       }
       this.connection.emit("iceStateChanged", e.iceConnectionState)
-    }, P.log("Listening for data channel"), e.ondatachannel = l => {
-      P.log("Received data channel");
+    }, _.log("Listening for data channel"), e.ondatachannel = l => {
+      _.log("Received data channel");
       const p = l.channel;
       s.getConnection(o, n)._initializeDataChannel(p)
-    }, P.log("Listening for remote stream"), e.ontrack = l => {
-      P.log("Received remote stream");
+    }, _.log("Listening for remote stream"), e.ontrack = l => {
+      _.log("Received remote stream");
       const p = l.streams[0],
-        g = s.getConnection(o, n);
-      if (g.type === be.Media) {
-        const k = g;
+        u = s.getConnection(o, n);
+      if (u.type === be.Media) {
+        const k = u;
         this._addStreamToMediaConnection(p, k)
       }
     }
   }
   cleanup() {
-    P.log("Cleaning up PeerConnection to " + this.connection.peer);
+    _.log("Cleaning up PeerConnection to " + this.connection.peer);
     const e = this.connection.peerConnection;
     if (!e) return;
     this.connection.peerConnection = null, e.onicecandidate = e.oniceconnectionstatechange = e.ondatachannel = e.ontrack = () => {};
@@ -26782,9 +26782,9 @@ class Nr {
       o = this.connection.provider;
     try {
       const n = await e.createOffer(this.connection.options.constraints);
-      P.log("Created offer."), this.connection.options.sdpTransform && typeof this.connection.options.sdpTransform == "function" && (n.sdp = this.connection.options.sdpTransform(n.sdp) || n.sdp);
+      _.log("Created offer."), this.connection.options.sdpTransform && typeof this.connection.options.sdpTransform == "function" && (n.sdp = this.connection.options.sdpTransform(n.sdp) || n.sdp);
       try {
-        await e.setLocalDescription(n), P.log("Set localDescription:", n, `for:${this.connection.peer}`);
+        await e.setLocalDescription(n), _.log("Set localDescription:", n, `for:${this.connection.peer}`);
         let t = {
           sdp: n,
           type: this.connection.type,
@@ -26806,10 +26806,10 @@ class Nr {
           dst: this.connection.peer
         })
       } catch (t) {
-        t != "OperationError: Failed to set local offer sdp: Called in wrong state: kHaveRemoteOffer" && (o.emitError(z.WebRTC, t), P.log("Failed to setLocalDescription, ", t))
+        t != "OperationError: Failed to set local offer sdp: Called in wrong state: kHaveRemoteOffer" && (o.emitError(z.WebRTC, t), _.log("Failed to setLocalDescription, ", t))
       }
     } catch (n) {
-      o.emitError(z.WebRTC, n), P.log("Failed to createOffer, ", n)
+      o.emitError(z.WebRTC, n), _.log("Failed to createOffer, ", n)
     }
   }
   async _makeAnswer() {
@@ -26817,9 +26817,9 @@ class Nr {
       o = this.connection.provider;
     try {
       const n = await e.createAnswer();
-      P.log("Created answer."), this.connection.options.sdpTransform && typeof this.connection.options.sdpTransform == "function" && (n.sdp = this.connection.options.sdpTransform(n.sdp) || n.sdp);
+      _.log("Created answer."), this.connection.options.sdpTransform && typeof this.connection.options.sdpTransform == "function" && (n.sdp = this.connection.options.sdpTransform(n.sdp) || n.sdp);
       try {
-        await e.setLocalDescription(n), P.log("Set localDescription:", n, `for:${this.connection.peer}`), o.socket.send({
+        await e.setLocalDescription(n), _.log("Set localDescription:", n, `for:${this.connection.peer}`), o.socket.send({
           type: q.Answer,
           payload: {
             sdp: n,
@@ -26829,45 +26829,45 @@ class Nr {
           dst: this.connection.peer
         })
       } catch (t) {
-        o.emitError(z.WebRTC, t), P.log("Failed to setLocalDescription, ", t)
+        o.emitError(z.WebRTC, t), _.log("Failed to setLocalDescription, ", t)
       }
     } catch (n) {
-      o.emitError(z.WebRTC, n), P.log("Failed to create answer, ", n)
+      o.emitError(z.WebRTC, n), _.log("Failed to create answer, ", n)
     }
   }
   async handleSDP(e, o) {
     o = new RTCSessionDescription(o);
     const n = this.connection.peerConnection,
       t = this.connection.provider;
-    P.log("Setting remote description", o);
+    _.log("Setting remote description", o);
     const s = this;
     try {
-      await n.setRemoteDescription(o), P.log(`Set remoteDescription:${e} for:${this.connection.peer}`), e === "OFFER" && await s._makeAnswer()
+      await n.setRemoteDescription(o), _.log(`Set remoteDescription:${e} for:${this.connection.peer}`), e === "OFFER" && await s._makeAnswer()
     } catch (l) {
-      t.emitError(z.WebRTC, l), P.log("Failed to setRemoteDescription, ", l)
+      t.emitError(z.WebRTC, l), _.log("Failed to setRemoteDescription, ", l)
     }
   }
   async handleCandidate(e) {
-    P.log("handleCandidate:", e);
+    _.log("handleCandidate:", e);
     try {
-      await this.connection.peerConnection.addIceCandidate(e), P.log(`Added ICE candidate for:${this.connection.peer}`)
+      await this.connection.peerConnection.addIceCandidate(e), _.log(`Added ICE candidate for:${this.connection.peer}`)
     } catch (o) {
-      this.connection.provider.emitError(z.WebRTC, o), P.log("Failed to handleCandidate, ", o)
+      this.connection.provider.emitError(z.WebRTC, o), _.log("Failed to handleCandidate, ", o)
     }
   }
   _addTracksToConnection(e, o) {
-    if (P.log(`add tracks from stream ${e.id} to peer connection`), !o.addTrack) return P.error("Your browser does't support RTCPeerConnection#addTrack. Ignored.");
+    if (_.log(`add tracks from stream ${e.id} to peer connection`), !o.addTrack) return _.error("Your browser does't support RTCPeerConnection#addTrack. Ignored.");
     e.getTracks().forEach(n => {
       o.addTrack(n, e)
     })
   }
   _addStreamToMediaConnection(e, o) {
-    P.log(`add stream ${e.id} to media connection ${o.connectionId}`), o.addStream(e)
+    _.log(`add stream ${e.id} to media connection ${o.connectionId}`), o.addStream(e)
   }
 }
 class zr extends si.EventEmitter {
   emitError(e, o) {
-    P.error("Error:", o), this.emit("error", new Jn(`${e}`, o))
+    _.error("Error:", o), this.emit("error", new Jn(`${e}`, o))
   }
 }
 class Jn extends Error {
@@ -26902,13 +26902,13 @@ const So = class extends Or {
   }
   _initializeDataChannel(e) {
     this.dataChannel = e, this.dataChannel.onopen = () => {
-      P.log(`DC#${this.connectionId} dc connection success`), this.emit("willCloseOnRemote")
+      _.log(`DC#${this.connectionId} dc connection success`), this.emit("willCloseOnRemote")
     }, this.dataChannel.onclose = () => {
-      P.log(`DC#${this.connectionId} dc closed for:`, this.peer), this.close()
+      _.log(`DC#${this.connectionId} dc closed for:`, this.peer), this.close()
     }
   }
   addStream(e) {
-    P.log("Receiving stream", e), this._remoteStream = e, super.emit("stream", e)
+    _.log("Receiving stream", e), this._remoteStream = e, super.emit("stream", e)
   }
   handleMessage(e) {
     const o = e.type,
@@ -26921,13 +26921,13 @@ const So = class extends Or {
         this._negotiator.handleCandidate(n.candidate);
         break;
       default:
-        P.warn(`Unrecognized message type:${o} from peer:${this.peer}`);
+        _.warn(`Unrecognized message type:${o} from peer:${this.peer}`);
         break
     }
   }
   answer(e, o = {}) {
     if (this._localStream) {
-      P.warn("Local stream already exists on this MediaConnection. Are you answering a call twice?");
+      _.warn("Local stream already exists on this MediaConnection. Are you answering a call twice?");
       return
     }
     this._localStream = e, o && o.sdpTransform && (this.options.sdpTransform = o.sdpTransform), this._negotiator.startConnection({
@@ -26969,7 +26969,7 @@ class $n {
       if (e.status !== 200) throw new Error(`Error. Status:${e.status}`);
       return e.text()
     } catch (e) {
-      P.error("Error retrieving ID", e);
+      _.error("Error retrieving ID", e);
       let o = "";
       throw this._options.path === "/" && this._options.host !== ie.CLOUD_HOST && (o = " If you passed in a `path` to your self-hosted PeerServer, you'll also need to pass in that same path when creating a new Peer."), new Error("Could not get an ID from the server." + o)
     }
@@ -26986,7 +26986,7 @@ class $n {
       }
       return e.json()
     } catch (e) {
-      throw P.error("Error retrieving list peers", e), new Error("Could not get list peers from the server." + e)
+      throw _.error("Error retrieving list peers", e), new Error("Could not get list peers from the server." + e)
     }
   }
 }
@@ -27003,11 +27003,11 @@ const Ve = class extends Or {
   }
   _initializeDataChannel(e) {
     this.dataChannel = e, this.dataChannel.onopen = () => {
-      P.log(`DC#${this.connectionId} dc connection success`), this._open = !0, this.emit("open")
+      _.log(`DC#${this.connectionId} dc connection success`), this._open = !0, this.emit("open")
     }, this.dataChannel.onmessage = o => {
-      P.log(`DC#${this.connectionId} dc onmessage:`, o.data)
+      _.log(`DC#${this.connectionId} dc onmessage:`, o.data)
     }, this.dataChannel.onclose = () => {
-      P.log(`DC#${this.connectionId} dc closed for:`, this.peer), this.close()
+      _.log(`DC#${this.connectionId} dc closed for:`, this.peer), this.close()
     }
   }
   close(e) {
@@ -27038,7 +27038,7 @@ const Ve = class extends Or {
         await this._negotiator.handleCandidate(o.candidate);
         break;
       default:
-        P.warn("Unrecognized message type:", e.type, "from peer:", this.peer);
+        _.warn("Unrecognized message type:", e.type, "from peer:", this.peer);
         break
     }
   }
@@ -27067,7 +27067,7 @@ class li extends Le {
     try {
       this.dataChannel.send(e)
     } catch (o) {
-      return P.error(`DC#:${this.connectionId} Error when sending:`, o), this._buffering = !0, this.close(), !1
+      return _.error(`DC#:${this.connectionId} Error when sending:`, o), this._buffering = !0, this.close(), !1
     }
     return !0
   }
@@ -27138,7 +27138,7 @@ class Do extends li {
   }
   _sendChunks(e) {
     const o = this.chunker.chunk(e);
-    P.log(`DC#${this.connectionId} Try to send ${o.length} chunks...`);
+    _.log(`DC#${this.connectionId} Try to send ${o.length} chunks...`);
     for (const n of o) this.send(n, !0)
   }
 }
@@ -27227,7 +27227,7 @@ const Ao = class extends zr {
       }, this._options = o, this._serializers = {
         ...this._serializers,
         ...this.options.serializers
-      }, this._options.host === "/" && (this._options.host = window.location.hostname), this._options.path && (this._options.path[0] !== "/" && (this._options.path = "/" + this._options.path), this._options.path[this._options.path.length - 1] !== "/" && (this._options.path += "/")), this._options.secure === void 0 && this._options.host !== ie.CLOUD_HOST ? this._options.secure = ie.isSecure() : this._options.host == ie.CLOUD_HOST && (this._options.secure = !0), this._options.logFunction && P.setLogFunction(this._options.logFunction), P.logLevel = this._options.debug || 0, this._api = new $n(o), this._socket = this._createServerConnection(), !ie.supports.audioVideo && !ie.supports.data) {
+      }, this._options.host === "/" && (this._options.host = window.location.hostname), this._options.path && (this._options.path[0] !== "/" && (this._options.path = "/" + this._options.path), this._options.path[this._options.path.length - 1] !== "/" && (this._options.path += "/")), this._options.secure === void 0 && this._options.host !== ie.CLOUD_HOST ? this._options.secure = ie.isSecure() : this._options.host == ie.CLOUD_HOST && (this._options.secure = !0), this._options.logFunction && _.setLogFunction(this._options.logFunction), _.logLevel = this._options.debug || 0, this._api = new $n(o), this._socket = this._createServerConnection(), !ie.supports.audioVideo && !ie.supports.data) {
       this._delayedAbort(z.BrowserIncompatible, "The current browser does not support WebRTC");
       return
     }
@@ -27270,7 +27270,7 @@ const Ao = class extends zr {
         this._abort(z.InvalidKey, `API KEY "${this._options.key}" is invalid`);
         break;
       case q.Leave:
-        P.log(`Received leave message from ${t}`), this._cleanupPeer(t), this._connections.delete(t);
+        _.log(`Received leave message from ${t}`), this._cleanupPeer(t), this._connections.delete(t);
         break;
       case q.Expire:
         this.emitError(z.PeerUnavailable, `Could not connect to peer ${t}`);
@@ -27278,15 +27278,15 @@ const Ao = class extends zr {
       case q.Offer: {
         const s = n.connectionId;
         let l = this.getConnection(t, s);
-        if (l && (l.close(), P.warn(`Offer received for existing Connection ID:${s}`)), n.type === be.Media) {
-          const g = new Ke(t, this, {
+        if (l && (l.close(), _.warn(`Offer received for existing Connection ID:${s}`)), n.type === be.Media) {
+          const u = new Ke(t, this, {
             connectionId: s,
             _payload: n,
             metadata: n.metadata
           });
-          l = g, this._addConnection(t, l), this.emit("call", g)
+          l = u, this._addConnection(t, l), this.emit("call", u)
         } else if (n.type === be.Data) {
-          const g = new this._serializers[n.serialization](t, this, {
+          const u = new this._serializers[n.serialization](t, this, {
             connectionId: s,
             _payload: n,
             metadata: n.metadata,
@@ -27294,23 +27294,23 @@ const Ao = class extends zr {
             serialization: n.serialization,
             reliable: n.reliable
           });
-          l = g, this._addConnection(t, l), this.emit("connection", g)
+          l = u, this._addConnection(t, l), this.emit("connection", u)
         } else {
-          P.warn(`Received malformed connection type:${n.type}`);
+          _.warn(`Received malformed connection type:${n.type}`);
           return
         }
         const p = this._getMessages(s);
-        for (const g of p) l.handleMessage(g);
+        for (const u of p) l.handleMessage(u);
         break
       }
       default: {
         if (!n) {
-          P.warn(`You received a malformed message from ${t} of type ${o}`);
+          _.warn(`You received a malformed message from ${t} of type ${o}`);
           return
         }
         const s = n.connectionId,
           l = this.getConnection(t, s);
-        l && l.peerConnection ? l.handleMessage(e) : s ? this._storeMessage(s, e) : P.warn("You received an unrecognized message:", e);
+        l && l.peerConnection ? l.handleMessage(e) : s ? this._storeMessage(s, e) : _.warn("You received an unrecognized message:", e);
         break
       }
     }
@@ -27327,7 +27327,7 @@ const Ao = class extends zr {
         serialization: "default",
         ...o
       }, this.disconnected) {
-      P.warn("You cannot connect to a new Peer because you called .disconnect() on this Peer and ended your connection with the server. You can create a new Peer to reconnect, or call reconnect on this peer if you believe its ID to still be available."), this.emitError(z.Disconnected, "Cannot connect to new Peer after disconnecting from server.");
+      _.warn("You cannot connect to a new Peer because you called .disconnect() on this Peer and ended your connection with the server. You can create a new Peer to reconnect, or call reconnect on this peer if you believe its ID to still be available."), this.emitError(z.Disconnected, "Cannot connect to new Peer after disconnecting from server.");
       return
     }
     const n = new this._serializers[o.serialization](e, this, o);
@@ -27335,11 +27335,11 @@ const Ao = class extends zr {
   }
   call(e, o, n = {}) {
     if (this.disconnected) {
-      P.warn("You cannot connect to a new Peer because you called .disconnect() on this Peer and ended your connection with the server. You can create a new Peer to reconnect."), this.emitError(z.Disconnected, "Cannot connect to new Peer after disconnecting from server.");
+      _.warn("You cannot connect to a new Peer because you called .disconnect() on this Peer and ended your connection with the server. You can create a new Peer to reconnect."), this.emitError(z.Disconnected, "Cannot connect to new Peer after disconnecting from server.");
       return
     }
     if (!o) {
-      P.error("To call a peer, you must provide a stream from your browser's `getUserMedia`.");
+      _.error("To call a peer, you must provide a stream from your browser's `getUserMedia`.");
       return
     }
     const t = new Ke(e, this, {
@@ -27349,7 +27349,7 @@ const Ao = class extends zr {
     return this._addConnection(e, t), t
   }
   _addConnection(e, o) {
-    P.log(`add connection ${o.type}:${o.connectionId} to peerId:${e}`), this._connections.has(e) || this._connections.set(e, []), this._connections.get(e).push(o)
+    _.log(`add connection ${o.type}:${o.connectionId} to peerId:${e}`), this._connections.has(e) || this._connections.set(e, []), this._connections.get(e).push(o)
   }
   _removeConnection(e) {
     const o = this._connections.get(e.peer);
@@ -27372,10 +27372,10 @@ const Ao = class extends zr {
     }, 0)
   }
   _abort(e, o) {
-    P.error("Aborting!"), this.emitError(e, o), this._lastServerId ? this.disconnect() : this.destroy()
+    _.error("Aborting!"), this.emitError(e, o), this._lastServerId ? this.disconnect() : this.destroy()
   }
   destroy() {
-    this.destroyed || (P.log(`Destroy peer with ID:${this.id}`), this.disconnect(), this._cleanup(), this._destroyed = !0, this.emit("close"))
+    this.destroyed || (_.log(`Destroy peer with ID:${this.id}`), this.disconnect(), this._cleanup(), this._destroyed = !0, this.emit("close"))
   }
   _cleanup() {
     for (const e of this._connections.keys()) this._cleanupPeer(e), this._connections.delete(e);
@@ -27389,13 +27389,13 @@ const Ao = class extends zr {
   disconnect() {
     if (this.disconnected) return;
     const e = this.id;
-    P.log(`Disconnect peer with ID:${e}`), this._disconnected = !0, this._open = !1, this.socket.close(), this._lastServerId = e, this._id = null, this.emit("disconnected", e)
+    _.log(`Disconnect peer with ID:${e}`), this._disconnected = !0, this._open = !1, this.socket.close(), this._lastServerId = e, this._id = null, this.emit("disconnected", e)
   }
   reconnect() {
-    if (this.disconnected && !this.destroyed) P.log(`Attempting reconnection to server with ID ${this._lastServerId}`), this._disconnected = !1, this._initialize(this._lastServerId);
+    if (this.disconnected && !this.destroyed) _.log(`Attempting reconnection to server with ID ${this._lastServerId}`), this._disconnected = !1, this._initialize(this._lastServerId);
     else {
       if (this.destroyed) throw new Error("This peer cannot reconnect to the server. It has already been destroyed.");
-      if (!this.disconnected && !this.open) P.error("In a hurry? We're still trying to make the initial connection!");
+      if (!this.disconnected && !this.open) _.error("In a hurry? We're still trying to make the initial connection!");
       else throw new Error(`Peer ${this.id} cannot reconnect because it is not disconnected from the server!`)
     }
   }
@@ -27594,8 +27594,8 @@ function Fe(i, e, o = ["East"]) {
       case "NE":
         for (let l = t.x + 1, p = t.y + 1; l < 8 && p < 8; l++, p++) {
           if (e[l][p]) {
-            let g = e[l][p];
-            n = n.concat(ye(i, g, l + "-" + p));
+            let u = e[l][p];
+            n = n.concat(ye(i, u, l + "-" + p));
             break
           }
           n.push({
@@ -27606,8 +27606,8 @@ function Fe(i, e, o = ["East"]) {
         }
         for (let l = t.x - 1, p = t.y - 1; l >= 0 && p >= 0; l--, p--) {
           if (e[l][p]) {
-            let g = e[l][p];
-            n = n.concat(ye(i, g, l + "-" + p));
+            let u = e[l][p];
+            n = n.concat(ye(i, u, l + "-" + p));
             break
           }
           n.push({
@@ -27620,8 +27620,8 @@ function Fe(i, e, o = ["East"]) {
       case "SE":
         for (let l = t.x + 1, p = t.y - 1; l < 8 && p >= 0; l++, p--) {
           if (e[l][p]) {
-            let g = e[l][p];
-            n = n.concat(ye(i, g, l + "-" + p));
+            let u = e[l][p];
+            n = n.concat(ye(i, u, l + "-" + p));
             break
           }
           n.push({
@@ -27632,8 +27632,8 @@ function Fe(i, e, o = ["East"]) {
         }
         for (let l = t.x - 1, p = t.y + 1; l >= 0 && p < 8; l--, p++) {
           if (e[l][p]) {
-            let g = e[l][p];
-            n = n.concat(ye(i, g, l + "-" + p));
+            let u = e[l][p];
+            n = n.concat(ye(i, u, l + "-" + p));
             break
           }
           n.push({
@@ -27670,8 +27670,8 @@ function Xn(i, e, o) {
       }), t == 4 && e[t][s - 1] && e[t][s - 1].name == "pawn" && !e[t + 1][s - 1]) {
       let l = Number(o.piece.src.split("-")[0]),
         p = Number(o.dst.split("-")[0]),
-        g = Number(o.dst.split("-")[1]);
-      o.piece.name == "pawn" && l - p > 1 && g == s - 1 && n.push({
+        u = Number(o.dst.split("-")[1]);
+      o.piece.name == "pawn" && l - p > 1 && u == s - 1 && n.push({
         piece: i,
         dst: `${t+1}-${s-1}`,
         type: "ep"
@@ -27680,30 +27680,51 @@ function Xn(i, e, o) {
     if (t == 4 && e[t][s + 1] && e[t][s + 1].name == "pawn" && !e[t + 1][s + 1]) {
       let l = Number(o.piece.src.split("-")[0]),
         p = Number(o.dst.split("-")[0]),
-        g = Number(o.dst.split("-")[1]);
-      o.piece.name == "pawn" && l - p > 1 && g == s + 1 && n.push({
+        u = Number(o.dst.split("-")[1]);
+      o.piece.name == "pawn" && l - p > 1 && u == s + 1 && n.push({
         piece: i,
         dst: `${t+1}-${s+1}`,
         type: "ep"
       })
     }
-  } else t - 1 >= 0 && !e[t - 1][s] && n.push({
-    piece: i,
-    dst: `${t-1}-${s}`,
-    type: "move"
-  }), t - 1 >= 0 && s + 1 < 8 && e[t - 1][s + 1] && e[t - 1][s + 1].color == "b" && n.push({
-    piece: i,
-    dst: `${t-1}-${s+1}`,
-    type: "attack"
-  }), t - 1 >= 0 && s - 1 >= 0 && e[t - 1][s - 1] && e[t - 1][s - 1].color == "b" && n.push({
-    piece: i,
-    dst: `${t-1}-${s-1}`,
-    type: "attack"
-  }), t == 6 && !e[t - 1][s] && !e[t - 2][s] && n.push({
-    piece: i,
-    dst: `${t-2}-${s}`,
-    type: "move"
-  });
+  } else {
+    if (t - 1 >= 0 && !e[t - 1][s] && n.push({
+        piece: i,
+        dst: `${t-1}-${s}`,
+        type: "move"
+      }), t - 1 >= 0 && s + 1 < 8 && e[t - 1][s + 1] && e[t - 1][s + 1].color == "b" && n.push({
+        piece: i,
+        dst: `${t-1}-${s+1}`,
+        type: "attack"
+      }), t - 1 >= 0 && s - 1 >= 0 && e[t - 1][s - 1] && e[t - 1][s - 1].color == "b" && n.push({
+        piece: i,
+        dst: `${t-1}-${s-1}`,
+        type: "attack"
+      }), t == 6 && !e[t - 1][s] && !e[t - 2][s] && n.push({
+        piece: i,
+        dst: `${t-2}-${s}`,
+        type: "move"
+      }), t == 3 && e[t][s - 1] && e[t][s - 1].name == "pawn" && !e[t + 1][s - 1]) {
+      let l = Number(o.piece.src.split("-")[0]),
+        p = Number(o.dst.split("-")[0]),
+        u = Number(o.dst.split("-")[1]);
+      o.piece.name == "pawn" && p - l > 1 && u == s - 1 && n.push({
+        piece: i,
+        dst: `${t-1}-${s-1}`,
+        type: "ep"
+      })
+    }
+    if (t == 3 && e[t][s + 1] && e[t][s + 1].name == "pawn" && !e[t + 1][s + 1]) {
+      let l = Number(o.piece.src.split("-")[0]),
+        p = Number(o.dst.split("-")[0]),
+        u = Number(o.dst.split("-")[1]);
+      o.piece.name == "pawn" && p - l > 1 && u == s + 1 && n.push({
+        piece: i,
+        dst: `${t-1}-${s+1}`,
+        type: "ep"
+      })
+    }
+  }
   return n
 }
 
@@ -27882,7 +27903,7 @@ class Qn {
         case this.EP:
           let s = Number(e.dst.split("-")[0]),
             l = Number(e.dst.split("-")[1]);
-          return o = this.board[s - 1][l], this.board[s - 1][l] = null, n = Number(e.piece.src.split("-")[0]), t = Number(e.piece.src.split("-")[1]), this.board[n][t] = null, this.army_size[e.piece.color == "b" ? "w" : "b"]--, this.history.push({
+          return o = this.board[s - 1][l], this.board[e.piece.color == "b" ? s - 1 : s + 1][l] = null, n = Number(e.piece.src.split("-")[0]), t = Number(e.piece.src.split("-")[1]), this.board[n][t] = null, this.army_size[e.piece.color == "b" ? "w" : "b"]--, this.history.push({
             Num: this.count++,
             move: {
               piece: {
@@ -28149,10 +28170,10 @@ var Yo = {
       l = s.toUpperCase(),
       p = t + "abcdef";
 
-    function g(r) {
+    function u(r) {
       this.name = "UnsupportedError", this.message = r || "This feature is not supported on this platform"
     }
-    g.prototype = new Error, g.prototype.constructor = g;
+    u.prototype = new Error, u.prototype.constructor = u;
     var k = Array.prototype.slice;
 
     function d(r) {
@@ -28163,8 +28184,8 @@ var Yo = {
         var c = 0;
         if (Object.prototype.toString.call(arguments[a]) === "[object String]")
           for (var m = 0; m < arguments[a].length; m++) {
-            for (var u = 0, b = 0; b < arguments[a].length; b++) u = arguments[a].charCodeAt(b) + (u << 6) + (u << 16) - u;
-            c += u
+            for (var g = 0, b = 0; b < arguments[a].length; b++) g = arguments[a].charCodeAt(b) + (g << 6) + (g << 16) - g;
+            c += g
           } else c = arguments[a];
         this.seed += (arguments.length - a) * c
       }
@@ -28228,9 +28249,9 @@ var Yo = {
       }), T(r.fixed && r.precision, "Chance: Cannot specify both fixed and precision.");
       var a, c = Math.pow(10, r.fixed),
         m = o / c,
-        u = -m;
-      T(r.min && r.fixed && r.min < u, "Chance: Min specified is out of range with fixed. Min should be, at least, " + u), T(r.max && r.fixed && r.max > m, "Chance: Max specified is out of range with fixed. Max should be, at most, " + m), r = h(r, {
-        min: u,
+        g = -m;
+      T(r.min && r.fixed && r.min < g, "Chance: Min specified is out of range with fixed. Min should be, at least, " + g), T(r.max && r.fixed && r.max > m, "Chance: Max specified is out of range with fixed. Max should be, at most, " + m), r = h(r, {
+        min: g,
         max: m
       }), a = this.integer({
         min: r.min * c,
@@ -28254,8 +28275,8 @@ var Yo = {
             max: r.max - r.min - r.exclude.length
           }),
           m = r.exclude.sort();
-        for (var u in m) {
-          if (c < m[u]) break;
+        for (var g in m) {
+          if (c < m[g]) break;
           c++
         }
         return c
@@ -28269,8 +28290,8 @@ var Yo = {
       var a = se.primes[se.primes.length - 1];
       if (r.max > a)
         for (var c = a + 2; c <= r.max; ++c) this.is_prime(c) && se.primes.push(c);
-      var m = se.primes.filter(function (u) {
-        return u >= r.min && u <= r.max
+      var m = se.primes.filter(function (g) {
+        return g >= r.min && g <= r.max
       });
       return this.pick(m)
     }, d.prototype.is_prime = function (r) {
@@ -28362,16 +28383,16 @@ var Yo = {
 
     function Ee(r) {
       for (var a = [], c = "identity", m = 0; m < r.length; m++) {
-        var u = r[m];
+        var g = r[m];
         switch (c) {
           case "escape":
-            a.push(new ae(u)), c = "identity";
+            a.push(new ae(g)), c = "identity";
             break;
           case "identity":
-            u === "{" ? c = "replace" : u === "\\" ? c = "escape" : a.push(new R(u));
+            g === "{" ? c = "replace" : g === "\\" ? c = "escape" : a.push(new R(g));
             break;
           case "replace":
-            u === "}" ? c = "identity" : a.push(new Me(u));
+            g === "}" ? c = "identity" : a.push(new Me(g));
             break
         }
       }
@@ -28384,7 +28405,7 @@ var Yo = {
         return c.substitute(a)
       }).join("")
     }, d.prototype.buffer = function (r) {
-      if (typeof Buffer > "u") throw new g("Sorry, the buffer() function is not supported on your platform");
+      if (typeof Buffer > "u") throw new u("Sorry, the buffer() function is not supported on your platform");
       r = h(r, {
         length: this.natural({
           min: 5,
@@ -28405,17 +28426,17 @@ var Yo = {
         return S.indexOf(H) !== -1
       };
       c && (m = c.comparator || m);
-      for (var u = [], b = 0, A, y = a * 50, j = k.call(arguments, 2); u.length < a;) {
+      for (var g = [], b = 0, A, y = a * 50, j = k.call(arguments, 2); g.length < a;) {
         var C = JSON.parse(JSON.stringify(j));
-        if (A = r.apply(this, C), m(u, A) || (u.push(A), b = 0), ++b > y) throw new RangeError("Chance: num is likely too large for sample set")
+        if (A = r.apply(this, C), m(g, A) || (g.push(A), b = 0), ++b > y) throw new RangeError("Chance: num is likely too large for sample set")
       }
-      return u
+      return g
     }, d.prototype.n = function (r, a) {
       T(typeof r != "function", "Chance: The first argument must be a function."), typeof a > "u" && (a = 1);
       var c = a,
         m = [],
-        u = k.call(arguments, 2);
-      for (c = Math.max(0, c), null; c--; null) m.push(r.apply(this, u));
+        g = k.call(arguments, 2);
+      for (c = Math.max(0, c), null; c--; null) m.push(r.apply(this, g));
       return m
     }, d.prototype.pad = function (r, a, c) {
       return c = c || "0", r = r + "", r.length >= a ? r : new Array(a - r.length + 1).join(c) + r
@@ -28437,22 +28458,22 @@ var Yo = {
       var c = r.slice(0),
         m = c.length;
       return this.n(function () {
-        var u = this.natural({
+        var g = this.natural({
             max: --m
           }),
-          b = c[u];
-        return c[u] = c[m], b
+          b = c[g];
+        return c[g] = c[m], b
       }, Math.min(m, a))
     }, d.prototype.shuffle = function (r) {
-      for (var a = [], c = 0, m = Number(r.length), u = M(m), b = m - 1, A, y = 0; y < m; y++) A = this.natural({
+      for (var a = [], c = 0, m = Number(r.length), g = M(m), b = m - 1, A, y = 0; y < m; y++) A = this.natural({
         max: b
-      }), c = u[A], a[y] = r[c], u[A] = u[b], b -= 1;
+      }), c = g[A], a[y] = r[c], g[A] = g[b], b -= 1;
       return a
     }, d.prototype.weighted = function (r, a, c) {
       if (r.length !== a.length) throw new RangeError("Chance: Length of array and weights must match");
-      for (var m = 0, u, b = 0; b < a.length; ++b) {
-        if (u = a[b], isNaN(u)) throw new RangeError("Chance: All weights must be numbers");
-        u > 0 && (m += u)
+      for (var m = 0, g, b = 0; b < a.length; ++b) {
+        if (g = a[b], isNaN(g)) throw new RangeError("Chance: All weights must be numbers");
+        g > 0 && (m += g)
       }
       if (m === 0) throw new RangeError("Chance: No valid entries in array weights");
       var A = this.random() * m,
@@ -28460,7 +28481,7 @@ var Yo = {
         j = -1,
         C;
       for (b = 0; b < a.length; ++b) {
-        if (u = a[b], y += u, u > 0) {
+        if (g = a[b], y += g, g > 0) {
           if (A <= y) {
             C = b;
             break
@@ -28488,15 +28509,15 @@ var Yo = {
           max: 18
         }),
         c = r.punctuation,
-        m, u = this.n(this.word, a);
-      return m = u.join(" "), m = this.capitalize(m), c !== !1 && !/^[.?;!:]$/.test(c) && (c = "."), c && (m += c), m
+        m, g = this.n(this.word, a);
+      return m = g.join(" "), m = this.capitalize(m), c !== !1 && !/^[.?;!:]$/.test(c) && (c = "."), c && (m += c), m
     }, d.prototype.syllable = function (r) {
       r = h(r);
       for (var a = r.length || this.natural({
           min: 2,
           max: 3
-        }), c = "bcdfghjklmnprstvwz", m = "aeiou", u = c + m, b = "", A, y = 0; y < a; y++) y === 0 ? A = this.character({
-        pool: u
+        }), c = "bcdfghjklmnprstvwz", m = "aeiou", g = c + m, b = "", A, y = 0; y < a; y++) y === 0 ? A = this.character({
+        pool: g
       }) : c.indexOf(A) === -1 ? A = this.character({
         pool: c
       }) : A = this.character({
@@ -28563,10 +28584,10 @@ var Yo = {
         c = new Date,
         m = c.getFullYear();
       if (r && r.type) {
-        var u = new Date,
+        var g = new Date,
           b = new Date;
-        u.setFullYear(m - a - 1), b.setFullYear(m - a), r = h(r, {
-          min: u,
+        g.setFullYear(m - a - 1), b.setFullYear(m - a), r = h(r, {
+          min: g,
           max: b
         })
       } else if (r && (r.minAge !== void 0 || r.maxAge !== void 0)) {
@@ -28594,8 +28615,8 @@ var Yo = {
       c = 11 - c % 11, c >= 10 && (c = 0);
       var m = c * 2 + a[8] * 3 + a[7] * 4 + a[6] * 5 + a[5] * 6 + a[4] * 7 + a[3] * 8 + a[2] * 9 + a[1] * 10 + a[0] * 11;
       m = 11 - m % 11, m >= 10 && (m = 0);
-      var u = "" + a[0] + a[1] + a[2] + "." + a[3] + a[4] + a[5] + "." + a[6] + a[7] + a[8] + "-" + c + m;
-      return r.formatted ? u : u.replace(/\D/g, "")
+      var g = "" + a[0] + a[1] + a[2] + "." + a[3] + a[4] + a[5] + "." + a[6] + a[7] + a[8] + "-" + c + m;
+      return r.formatted ? g : g.replace(/\D/g, "")
     }, d.prototype.cnpj = function (r) {
       r = h(r, {
         formatted: !0
@@ -28607,8 +28628,8 @@ var Yo = {
       c = 11 - c % 11, c < 2 && (c = 0);
       var m = c * 2 + a[11] * 3 + a[10] * 4 + a[9] * 5 + a[8] * 6 + a[7] * 7 + a[6] * 8 + a[5] * 9 + a[4] * 2 + a[3] * 3 + a[2] * 4 + a[1] * 5 + a[0] * 6;
       m = 11 - m % 11, m < 2 && (m = 0);
-      var u = "" + a[0] + a[1] + "." + a[2] + a[3] + a[4] + "." + a[5] + a[6] + a[7] + "/" + a[8] + a[9] + a[10] + a[11] + "-" + c + m;
-      return r.formatted ? u : u.replace(/\D/g, "")
+      var g = "" + a[0] + a[1] + "." + a[2] + a[3] + a[4] + "." + a[5] + a[6] + a[7] + "/" + a[8] + a[9] + a[10] + a[11] + "-" + c + m;
+      return r.formatted ? g : g.replace(/\D/g, "")
     }, d.prototype.first = function (r) {
       return r = h(r, {
         gender: this.gender(),
@@ -28642,20 +28663,20 @@ var Yo = {
       }
       return r = r + (10 - parseInt(a.toString().slice(-1))).toString().slice(-1), r
     }, d.prototype.mrz = function (r) {
-      var a = function (u) {
+      var a = function (g) {
           var b = "<ABCDEFGHIJKLMNOPQRSTUVWXYXZ".split(""),
             A = [7, 3, 1],
             y = 0;
-          return typeof u != "string" && (u = u.toString()), u.split("").forEach(function (j, C) {
+          return typeof g != "string" && (g = g.toString()), g.split("").forEach(function (j, C) {
             var S = b.indexOf(j);
             S !== -1 ? j = S === 0 ? 0 : S + 9 : j = parseInt(j, 10), j *= A[C % A.length], y += j
           }), y % 10
         },
-        c = function (u) {
+        c = function (g) {
           var b = function (y) {
               return new Array(y + 1).join("<")
             },
-            A = ["P<", u.issuer, u.last.toUpperCase(), "<<", u.first.toUpperCase(), b(39 - (u.last.length + u.first.length + 2)), u.passportNumber, a(u.passportNumber), u.nationality, u.dob, a(u.dob), u.gender, u.expiry, a(u.expiry), b(14), a(b(14))].join("");
+            A = ["P<", g.issuer, g.last.toUpperCase(), "<<", g.first.toUpperCase(), b(39 - (g.last.length + g.first.length + 2)), g.passportNumber, a(g.passportNumber), g.nationality, g.dob, a(g.dob), g.gender, g.expiry, a(g.expiry), b(14), a(b(14))].join("");
           return A + a(A.substr(44, 10) + A.substr(57, 7) + A.substr(65, 7))
         },
         m = this;
@@ -28667,14 +28688,14 @@ var Yo = {
           max: 999999999
         }),
         dob: function () {
-          var u = m.birthday({
+          var g = m.birthday({
             type: "adult"
           });
-          return [u.getFullYear().toString().substr(2), m.pad(u.getMonth() + 1, 2), m.pad(u.getDate(), 2)].join("")
+          return [g.getFullYear().toString().substr(2), m.pad(g.getMonth() + 1, 2), m.pad(g.getDate(), 2)].join("")
         }(),
         expiry: function () {
-          var u = new Date;
-          return [(u.getFullYear() + 5).toString().substr(2), m.pad(u.getMonth() + 1, 2), m.pad(u.getDate(), 2)].join("")
+          var g = new Date;
+          return [(g.getFullYear() + 5).toString().substr(2), m.pad(g.getMonth() + 1, 2), m.pad(g.getDate(), 2)].join("")
         }(),
         gender: this.gender() === "Female" ? "F" : "M",
         issuer: "GBR",
@@ -28851,7 +28872,7 @@ var Yo = {
           http: "http",
           https: "https"
         },
-        u = {
+        g = {
           bmp: "bmp",
           gif: "gif",
           jpg: "jpg",
@@ -28886,7 +28907,7 @@ var Yo = {
         if (typeof r != "object") return null;
         if (r.constructor === "Array") return null
       }
-      return y = h(r, y), y.email || (y.email = this.email()), y.protocol = m[y.protocol] ? y.protocol + ":" : "", y.size = parseInt(y.size, 0) ? y.size : "", y.rating = A[y.rating] ? y.rating : "", y.fallback = b[y.fallback] ? y.fallback : "", y.fileExtension = u[y.fileExtension] ? y.fileExtension : "", a = y.protocol + c + this.bimd5.md5(y.email) + (y.fileExtension ? "." + y.fileExtension : "") + (y.size || y.rating || y.fallback ? "?" : "") + (y.size ? "&s=" + y.size.toString() : "") + (y.rating ? "&r=" + y.rating : "") + (y.fallback ? "&d=" + y.fallback : ""), a
+      return y = h(r, y), y.email || (y.email = this.email()), y.protocol = m[y.protocol] ? y.protocol + ":" : "", y.size = parseInt(y.size, 0) ? y.size : "", y.rating = A[y.rating] ? y.rating : "", y.fallback = b[y.fallback] ? y.fallback : "", y.fileExtension = g[y.fileExtension] ? y.fileExtension : "", a = y.protocol + c + this.bimd5.md5(y.email) + (y.fileExtension ? "." + y.fileExtension : "") + (y.size || y.rating || y.fallback ? "?" : "") + (y.size ? "&s=" + y.size.toString() : "") + (y.rating ? "&r=" + y.rating : "") + (y.fallback ? "&d=" + y.fallback : ""), a
     }, d.prototype.color = function (r) {
       function a(ne, ro) {
         return [ne, ne, ne].join(ro || "")
@@ -28898,7 +28919,7 @@ var Yo = {
             min: Y,
             max: pe
           }) : "",
-          Eo = u ? a(this.natural({
+          Eo = g ? a(this.natural({
             min: b,
             max: A
           }), ",") : this.natural({
@@ -28915,14 +28936,14 @@ var Yo = {
 
       function m(ne, ro, Mo) {
         var Eo = Mo ? "#" : "",
-          _e = "";
-        return u ? (_e = a(this.pad(this.hex({
+          Pe = "";
+        return g ? (Pe = a(this.pad(this.hex({
           min: b,
           max: A
-        }), 2)), r.format === "shorthex" && (_e = a(this.hex({
+        }), 2)), r.format === "shorthex" && (Pe = a(this.hex({
           min: 0,
           max: 15
-        })))) : r.format === "shorthex" ? _e = this.pad(this.hex({
+        })))) : r.format === "shorthex" ? Pe = this.pad(this.hex({
           min: Math.floor(y / 16),
           max: Math.floor(j / 16)
         }), 1) + this.pad(this.hex({
@@ -28931,7 +28952,7 @@ var Yo = {
         }), 1) + this.pad(this.hex({
           min: Math.floor(H / 16),
           max: Math.floor(G / 16)
-        }), 1) : y !== void 0 || j !== void 0 || C !== void 0 || S !== void 0 || H !== void 0 || G !== void 0 ? _e = this.pad(this.hex({
+        }), 1) : y !== void 0 || j !== void 0 || C !== void 0 || S !== void 0 || H !== void 0 || G !== void 0 ? Pe = this.pad(this.hex({
           min: y,
           max: j
         }), 2) + this.pad(this.hex({
@@ -28940,7 +28961,7 @@ var Yo = {
         }), 2) + this.pad(this.hex({
           min: H,
           max: G
-        }), 2) : _e = this.pad(this.hex({
+        }), 2) : Pe = this.pad(this.hex({
           min: b,
           max: A
         }), 2) + this.pad(this.hex({
@@ -28949,7 +28970,7 @@ var Yo = {
         }), 2) + this.pad(this.hex({
           min: b,
           max: A
-        }), 2), Eo + _e
+        }), 2), Eo + Pe
       }
       r = h(r, {
         format: this.pick(["hex", "shorthex", "rgb", "rgba", "0x", "name"]),
@@ -28966,7 +28987,7 @@ var Yo = {
         min_alpha: 0,
         max_alpha: 1
       });
-      var u = r.grayscale,
+      var g = r.grayscale,
         b = r.min,
         A = r.max,
         y = r.min_red,
@@ -28977,7 +28998,7 @@ var Yo = {
         G = r.max_blue,
         Y = r.min_alpha,
         pe = r.max_alpha;
-      r.min_red === void 0 && (y = b), r.max_red === void 0 && (j = A), r.min_green === void 0 && (C = b), r.max_green === void 0 && (S = A), r.min_blue === void 0 && (H = b), r.max_blue === void 0 && (G = A), r.min_alpha === void 0 && (Y = 0), r.max_alpha === void 0 && (pe = 1), u && b === 0 && A === 255 && y !== void 0 && j !== void 0 && (b = (y + C + H) / 3, A = (j + S + G) / 3);
+      r.min_red === void 0 && (y = b), r.max_red === void 0 && (j = A), r.min_green === void 0 && (C = b), r.max_green === void 0 && (S = A), r.min_blue === void 0 && (H = b), r.max_blue === void 0 && (G = A), r.min_alpha === void 0 && (Y = 0), r.max_alpha === void 0 && (pe = 1), g && b === 0 && A === 255 && y !== void 0 && j !== void 0 && (b = (y + C + H) / 3, A = (j + S + G) / 3);
       var ce;
       if (r.format === "hex") ce = m.call(this, 2, 6, !0);
       else if (r.format === "shorthex") ce = m.call(this, 1, 3, !0);
@@ -29165,8 +29186,8 @@ var Yo = {
         max: 90,
         format: m
       });
-      var u = r.format.toLowerCase();
-      switch ((u === a || u === c) && (T(r.min < 0 || r.min > 89, "Chance: Min specified is out of range. Should be between 0 - 89"), T(r.max < 0 || r.max > 89, "Chance: Max specified is out of range. Should be between 0 - 89"), T(r.fixed > 4, "Chance: Fixed specified should be below or equal to 4")), u) {
+      var g = r.format.toLowerCase();
+      switch ((g === a || g === c) && (T(r.min < 0 || r.min > 89, "Chance: Min specified is out of range. Should be between 0 - 89"), T(r.max < 0 || r.max > 89, "Chance: Max specified is out of range. Should be between 0 - 89"), T(r.fixed > 4, "Chance: Fixed specified should be below or equal to 4")), g) {
         case a:
           return this.integer({
             min: r.min,
@@ -29208,8 +29229,8 @@ var Yo = {
         max: 180,
         format: m
       });
-      var u = r.format.toLowerCase();
-      switch ((u === a || u === c) && (T(r.min < 0 || r.min > 179, "Chance: Min specified is out of range. Should be between 0 - 179"), T(r.max < 0 || r.max > 179, "Chance: Max specified is out of range. Should be between 0 - 179"), T(r.fixed > 4, "Chance: Fixed specified should be below or equal to 4")), u) {
+      var g = r.format.toLowerCase();
+      switch ((g === a || g === c) && (T(r.min < 0 || r.min > 179, "Chance: Min specified is out of range. Should be between 0 - 179"), T(r.max < 0 || r.max > 179, "Chance: Max specified is out of range. Should be between 0 - 179"), T(r.fixed > 4, "Chance: Fixed specified should be below or equal to 4")), g) {
         case a:
           return this.integer({
             min: r.min,
@@ -29256,13 +29277,13 @@ var Yo = {
         mobile: !1,
         exampleNumber: !1
       }), r.formatted || (r.parens = !1);
-      var u;
+      var g;
       switch (r.country) {
         case "fr":
           r.mobile ? (c = this.pick(["06", "07"]) + a.string({
             pool: "0123456789",
             length: 8
-          }), u = r.formatted ? c.match(/../g).join(" ") : c) : (c = this.pick(["01" + this.pick(["30", "34", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "53", "55", "56", "58", "60", "64", "69", "70", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83"]) + a.string({
+          }), g = r.formatted ? c.match(/../g).join(" ") : c) : (c = this.pick(["01" + this.pick(["30", "34", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "53", "55", "56", "58", "60", "64", "69", "70", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83"]) + a.string({
             pool: "0123456789",
             length: 6
           }), "02" + this.pick(["14", "18", "22", "23", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "40", "41", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "56", "57", "61", "62", "69", "72", "76", "77", "78", "85", "90", "96", "97", "98", "99"]) + a.string({
@@ -29280,7 +29301,7 @@ var Yo = {
           }), "09" + a.string({
             pool: "0123456789",
             length: 8
-          })]), u = r.formatted ? c.match(/../g).join(" ") : c);
+          })]), g = r.formatted ? c.match(/../g).join(" ") : c);
           break;
         case "uk":
           r.mobile ? (c = this.pick([{
@@ -29289,7 +29310,7 @@ var Yo = {
           }, {
             area: "07624 ",
             sections: [6]
-          }]), u = r.formatted ? m(c) : m(c).replace(" ", "")) : (c = this.pick([{
+          }]), g = r.formatted ? m(c) : m(c).replace(" ", "")) : (c = this.pick([{
             area: "01" + this.character({
               pool: "234569"
             }) + "1 ",
@@ -29334,7 +29355,7 @@ var Yo = {
           }, {
             area: "019" + this.pick(["00", "05", "35", "46", "49", "63", "95"]) + " ",
             sections: [6]
-          }]), u = r.formatted ? m(c) : m(c).replace(" ", "", "g"));
+          }]), g = r.formatted ? m(c) : m(c).replace(" ", "", "g"));
           break;
         case "za":
           r.mobile ? (c = this.pick(["060" + this.pick(["3", "4", "5", "6", "7", "8", "9"]) + a.string({
@@ -29355,7 +29376,7 @@ var Yo = {
           }), "08" + this.pick(["0", "1", "2", "3", "4", "5"]) + a.string({
             pool: "0123456789",
             length: 7
-          })]), u = r.formatted || c) : (c = this.pick(["01" + this.pick(["0", "1", "2", "3", "4", "5", "6", "7", "8"]) + a.string({
+          })]), g = r.formatted || c) : (c = this.pick(["01" + this.pick(["0", "1", "2", "3", "4", "5", "6", "7", "8"]) + a.string({
             pool: "0123456789",
             length: 7
           }), "02" + this.pick(["1", "2", "3", "4", "7", "8"]) + a.string({
@@ -29370,7 +29391,7 @@ var Yo = {
           }), "05" + this.pick(["1", "3", "4", "6", "7", "8"]) + a.string({
             pool: "0123456789",
             length: 7
-          })]), u = r.formatted || c);
+          })]), g = r.formatted || c);
           break;
         case "us":
           var b = this.areacode(r).toString(),
@@ -29388,7 +29409,7 @@ var Yo = {
               min: 1e3,
               max: 9999
             }).toString();
-          u = r.formatted ? b + " " + A + "-" + y : b + A + y;
+          g = r.formatted ? b + " " + A + "-" + y : b + A + y;
           break;
         case "br":
           var j = this.pick(["11", "12", "13", "14", "15", "16", "17", "18", "19", "21", "22", "24", "27", "28", "31", "32", "33", "34", "35", "37", "38", "41", "42", "43", "44", "45", "46", "47", "48", "49", "51", "53", "54", "55", "61", "62", "63", "64", "65", "66", "67", "68", "69", "71", "73", "74", "75", "77", "79", "81", "82", "83", "84", "85", "86", "87", "88", "89", "91", "92", "93", "94", "95", "96", "97", "98", "99"]),
@@ -29404,10 +29425,10 @@ var Yo = {
             pool: "0123456789",
             length: 4
           });
-          u = r.formatted ? "(" + j + ") " + C + "-" + S : j + C + S;
+          g = r.formatted ? "(" + j + ") " + C + "-" + S : j + C + S;
           break
       }
-      return u
+      return g
     }, d.prototype.postal = function () {
       var r = this.character({
           pool: "XVTSRPNKLMHJGECBA"
@@ -29437,7 +29458,7 @@ var Yo = {
           casing: "upper"
         }) : "",
         m = r + a + c,
-        u = this.natural({
+        g = this.natural({
           max: 9
         }),
         b = this.character({
@@ -29447,7 +29468,7 @@ var Yo = {
           alpha: !0,
           casing: "upper"
         }),
-        A = u + b;
+        A = g + b;
       return m + " " + A
     }, d.prototype.counties = function (r) {
       return r = h(r, {
@@ -29473,8 +29494,8 @@ var Yo = {
         case "us":
           var c = this.get("us_states_and_dc"),
             m = this.get("territories"),
-            u = this.get("armed_forces");
-          a = [], r.us_states_and_dc && (a = a.concat(c)), r.territories && (a = a.concat(m)), r.armed_forces && (a = a.concat(u));
+            g = this.get("armed_forces");
+          a = [], r.us_states_and_dc && (a = a.concat(c)), r.territories && (a = a.concat(m)), r.armed_forces && (a = a.concat(g));
           break;
         case "it":
         case "mx":
@@ -29529,10 +29550,10 @@ var Yo = {
           string: !1
         });
         var m = typeof r.min < "u" ? r.min.getTime() : 1,
-          u = typeof r.max < "u" ? r.max.getTime() : 864e13;
+          g = typeof r.max < "u" ? r.max.getTime() : 864e13;
         c = new Date(this.integer({
           min: m,
-          max: u
+          max: g
         }))
       } else {
         var b = this.month({
@@ -29644,8 +29665,8 @@ var Yo = {
     }, d.prototype.currency_pair = function (r) {
       var a = this.unique(this.currency, 2, {
         comparator: function (c, m) {
-          return c.reduce(function (u, b) {
-            return u || b.code === m.code
+          return c.reduce(function (g, b) {
+            return g || b.code === m.code
           }, !1)
         }
       });
@@ -29730,7 +29751,7 @@ var Yo = {
         m = r.last ? r.last : this.last({
           nationality: "it"
         }),
-        u = r.birthday ? r.birthday : this.birthday(),
+        g = r.birthday ? r.birthday : this.birthday(),
         b = r.city ? r.city : this.pickone(["A", "B", "C", "D", "E", "F", "G", "H", "I", "L", "M", "Z"]) + this.pad(this.natural({
           max: 999
         }), 3),
@@ -29751,7 +29772,7 @@ var Yo = {
           for (var H = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", G = "ABCDEFGHIJABCDEFGHIJKLMNOPQRSTUVWXYZ", Y = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", pe = "BAKPLCQDREVOSFTGUHMINJWZYX", ce = 0, ne = 0; ne < 15; ne++) ne % 2 !== 0 ? ce += Y.indexOf(G[H.indexOf(S[ne])]) : ce += pe.indexOf(G[H.indexOf(S[ne])]);
           return Y[ce % 26]
         };
-      return A = A.concat(y(m, !0), y(c), j(u, a, this), b.toUpperCase().split("")).join(""), A += C(A.toUpperCase()), A.toUpperCase()
+      return A = A.concat(y(m, !0), y(c), j(g, a, this), b.toUpperCase().split("")).join(""), A += C(A.toUpperCase()), A.toUpperCase()
     }, d.prototype.pl_pesel = function () {
       for (var r = this.natural({
           min: 1,
@@ -29815,33 +29836,33 @@ var Yo = {
       return this.bool() ? "heads" : "tails"
     };
 
-    function _(r) {
+    function P(r) {
       return function () {
         return this.natural(r)
       }
     }
-    d.prototype.d4 = _({
+    d.prototype.d4 = P({
       min: 1,
       max: 4
-    }), d.prototype.d6 = _({
+    }), d.prototype.d6 = P({
       min: 1,
       max: 6
-    }), d.prototype.d8 = _({
+    }), d.prototype.d8 = P({
       min: 1,
       max: 8
-    }), d.prototype.d10 = _({
+    }), d.prototype.d10 = P({
       min: 1,
       max: 10
-    }), d.prototype.d12 = _({
+    }), d.prototype.d12 = P({
       min: 1,
       max: 12
-    }), d.prototype.d20 = _({
+    }), d.prototype.d20 = P({
       min: 1,
       max: 20
-    }), d.prototype.d30 = _({
+    }), d.prototype.d30 = P({
       min: 1,
       max: 30
-    }), d.prototype.d100 = _({
+    }), d.prototype.d100 = P({
       min: 1,
       max: 100
     }), d.prototype.rpg = function (r, a) {
@@ -29849,7 +29870,7 @@ var Yo = {
         var c = r.toLowerCase().split("d"),
           m = [];
         if (c.length !== 2 || !parseInt(c[0], 10) || !parseInt(c[1], 10)) throw new Error("Chance: Invalid format provided. Please provide #d# where the first # is the number of dice to roll, the second # is the max of each die");
-        for (var u = c[0]; u > 0; u--) m[u - 1] = this.natural({
+        for (var g = c[0]; g > 0; g--) m[g - 1] = this.natural({
           min: 1,
           max: c[1]
         });
@@ -29898,7 +29919,7 @@ var Yo = {
         c = +a.substring(a.length - 1);
       return c === this.luhn_calculate(+a.substring(0, a.length - 1))
     }, d.prototype.luhn_calculate = function (r) {
-      for (var a = r.toString().split("").reverse(), c = 0, m, u = 0, b = a.length; b > u; ++u) m = +a[u], u % 2 === 0 && (m *= 2, m > 9 && (m -= 9)), c += m;
+      for (var a = r.toString().split("").reverse(), c = 0, m, g = 0, b = a.length; b > g; ++g) m = +a[g], g % 2 === 0 && (m *= 2, m > 9 && (m -= 9)), c += m;
       return c * 9 % 10
     }, d.prototype.md5 = function (r) {
       var a = {
@@ -29918,25 +29939,25 @@ var Yo = {
       var a = r || {},
         c = "fileExtension",
         m = Object.keys(this.get("fileExtension")),
-        u, b;
-      if (u = this.word({
+        g, b;
+      if (g = this.word({
           length: a.length
-        }), a.extension) return b = a.extension, u + "." + b;
+        }), a.extension) return b = a.extension, g + "." + b;
       if (a.extensions) {
-        if (Array.isArray(a.extensions)) return b = this.pickone(a.extensions), u + "." + b;
+        if (Array.isArray(a.extensions)) return b = this.pickone(a.extensions), g + "." + b;
         if (a.extensions.constructor === Object) {
           var A = a.extensions,
             y = Object.keys(A);
-          return b = this.pickone(A[this.pickone(y)]), u + "." + b
+          return b = this.pickone(A[this.pickone(y)]), g + "." + b
         }
         throw new Error("Chance: Extensions must be an Array or Object")
       }
       if (a.fileType) {
         var j = a.fileType;
-        if (m.indexOf(j) !== -1) return b = this.pickone(this.get(c)[j]), u + "." + b;
+        if (m.indexOf(j) !== -1) return b = this.pickone(this.get(c)[j]), g + "." + b;
         throw new RangeError("Chance: Expect file type value to be 'raster', 'vector', '3d' or 'document'")
       }
-      return b = this.pickone(this.get(c)[this.pickone(m)]), u + "." + b
+      return b = this.pickone(this.get(c)[this.pickone(m)]), g + "." + b
     }, d.prototype.fileWithContent = function (r) {
       var a = r || {},
         c = "fileName" in a ? a.fileName : this.file().split(".")[0];
@@ -34242,20 +34263,20 @@ var Yo = {
       };
 
     function io(r, a) {
-      for (var c = fe(r), m, u = 0, b = c.length; u < b; u++) m = c[u], a[m] = r[m] || a[m]
+      for (var c = fe(r), m, g = 0, b = c.length; g < b; g++) m = c[g], a[m] = r[m] || a[m]
     }
 
     function ke(r, a) {
       for (var c = 0, m = r.length; c < m; c++) a[c] = r[c]
     }
 
-    function Pe(r, a) {
+    function _e(r, a) {
       var c = Array.isArray(r),
         m = a || (c ? new Array(r.length) : {});
       return c ? ke(r, m) : io(r, m), m
     }
     d.prototype.get = function (r) {
-      return Pe(se[r])
+      return _e(se[r])
     }, d.prototype.mac_address = function (r) {
       r = h(r), r.separator || (r.separator = r.networkVersion ? "." : ":");
       var a = "ABCDEF1234567890",
@@ -34273,10 +34294,10 @@ var Yo = {
           dev: 1,
           pool: []
         }), T(r.pool.constructor !== Array, "Chance: The pool option must be a valid array."), T(typeof r.mean != "number", "Chance: Mean (mean) must be a number"), T(typeof r.dev != "number", "Chance: Standard deviation (dev) must be a number"), r.pool.length > 0) return this.normal_pool(r);
-      var a, c, m, u, b = r.mean,
+      var a, c, m, g, b = r.mean,
         A = r.dev;
       do c = this.random() * 2 - 1, m = this.random() * 2 - 1, a = c * c + m * m; while (a >= 1);
-      return u = c * Math.sqrt(-2 * Math.log(a) / a), A * u + b
+      return g = c * Math.sqrt(-2 * Math.log(a) / a), A * g + b
     }, d.prototype.normal_pool = function (r) {
       var a = 0;
       do {
@@ -34319,7 +34340,7 @@ var Yo = {
         casing: "upper"
       })
     }, d.prototype.set = function (r, a) {
-      typeof r == "string" ? se[r] = a : se = Pe(r, se)
+      typeof r == "string" ? se[r] = a : se = _e(r, se)
     }, d.prototype.tv = function (r) {
       return this.radio(r)
     }, d.prototype.cnpj = function () {
@@ -34345,9 +34366,9 @@ var Yo = {
     }, Q.prototype.init_by_array = function (r, a) {
       var c = 1,
         m = 0,
-        u, b;
-      for (this.init_genrand(19650218), u = this.N > a ? this.N : a; u; u--) b = this.mt[c - 1] ^ this.mt[c - 1] >>> 30, this.mt[c] = (this.mt[c] ^ (((b & 4294901760) >>> 16) * 1664525 << 16) + (b & 65535) * 1664525) + r[m] + m, this.mt[c] >>>= 0, c++, m++, c >= this.N && (this.mt[0] = this.mt[this.N - 1], c = 1), m >= a && (m = 0);
-      for (u = this.N - 1; u; u--) b = this.mt[c - 1] ^ this.mt[c - 1] >>> 30, this.mt[c] = (this.mt[c] ^ (((b & 4294901760) >>> 16) * 1566083941 << 16) + (b & 65535) * 1566083941) - c, this.mt[c] >>>= 0, c++, c >= this.N && (this.mt[0] = this.mt[this.N - 1], c = 1);
+        g, b;
+      for (this.init_genrand(19650218), g = this.N > a ? this.N : a; g; g--) b = this.mt[c - 1] ^ this.mt[c - 1] >>> 30, this.mt[c] = (this.mt[c] ^ (((b & 4294901760) >>> 16) * 1664525 << 16) + (b & 65535) * 1664525) + r[m] + m, this.mt[c] >>>= 0, c++, m++, c >= this.N && (this.mt[0] = this.mt[this.N - 1], c = 1), m >= a && (m = 0);
+      for (g = this.N - 1; g; g--) b = this.mt[c - 1] ^ this.mt[c - 1] >>> 30, this.mt[c] = (this.mt[c] ^ (((b & 4294901760) >>> 16) * 1566083941 << 16) + (b & 65535) * 1566083941) - c, this.mt[c] >>>= 0, c++, c >= this.N && (this.mt[0] = this.mt[this.N - 1], c = 1);
       this.mt[0] = 2147483648
     }, Q.prototype.genrand_int32 = function () {
       var r, a = new Array(0, this.MATRIX_A);
@@ -34374,27 +34395,27 @@ var Yo = {
     var N = function () {};
     N.prototype.VERSION = "1.0.1", N.prototype.safe_add = function (a, c) {
       var m = (a & 65535) + (c & 65535),
-        u = (a >> 16) + (c >> 16) + (m >> 16);
-      return u << 16 | m & 65535
+        g = (a >> 16) + (c >> 16) + (m >> 16);
+      return g << 16 | m & 65535
     }, N.prototype.bit_roll = function (r, a) {
       return r << a | r >>> 32 - a
-    }, N.prototype.md5_cmn = function (r, a, c, m, u, b) {
-      return this.safe_add(this.bit_roll(this.safe_add(this.safe_add(a, r), this.safe_add(m, b)), u), c)
-    }, N.prototype.md5_ff = function (r, a, c, m, u, b, A) {
-      return this.md5_cmn(a & c | ~a & m, r, a, u, b, A)
-    }, N.prototype.md5_gg = function (r, a, c, m, u, b, A) {
-      return this.md5_cmn(a & m | c & ~m, r, a, u, b, A)
-    }, N.prototype.md5_hh = function (r, a, c, m, u, b, A) {
-      return this.md5_cmn(a ^ c ^ m, r, a, u, b, A)
-    }, N.prototype.md5_ii = function (r, a, c, m, u, b, A) {
-      return this.md5_cmn(c ^ (a | ~m), r, a, u, b, A)
+    }, N.prototype.md5_cmn = function (r, a, c, m, g, b) {
+      return this.safe_add(this.bit_roll(this.safe_add(this.safe_add(a, r), this.safe_add(m, b)), g), c)
+    }, N.prototype.md5_ff = function (r, a, c, m, g, b, A) {
+      return this.md5_cmn(a & c | ~a & m, r, a, g, b, A)
+    }, N.prototype.md5_gg = function (r, a, c, m, g, b, A) {
+      return this.md5_cmn(a & m | c & ~m, r, a, g, b, A)
+    }, N.prototype.md5_hh = function (r, a, c, m, g, b, A) {
+      return this.md5_cmn(a ^ c ^ m, r, a, g, b, A)
+    }, N.prototype.md5_ii = function (r, a, c, m, g, b, A) {
+      return this.md5_cmn(c ^ (a | ~m), r, a, g, b, A)
     }, N.prototype.binl_md5 = function (r, a) {
       r[a >> 5] |= 128 << a % 32, r[(a + 64 >>> 9 << 4) + 14] = a;
-      var c, m, u, b, A, y = 1732584193,
+      var c, m, g, b, A, y = 1732584193,
         j = -271733879,
         C = -1732584194,
         S = 271733878;
-      for (c = 0; c < r.length; c += 16) m = y, u = j, b = C, A = S, y = this.md5_ff(y, j, C, S, r[c], 7, -680876936), S = this.md5_ff(S, y, j, C, r[c + 1], 12, -389564586), C = this.md5_ff(C, S, y, j, r[c + 2], 17, 606105819), j = this.md5_ff(j, C, S, y, r[c + 3], 22, -1044525330), y = this.md5_ff(y, j, C, S, r[c + 4], 7, -176418897), S = this.md5_ff(S, y, j, C, r[c + 5], 12, 1200080426), C = this.md5_ff(C, S, y, j, r[c + 6], 17, -1473231341), j = this.md5_ff(j, C, S, y, r[c + 7], 22, -45705983), y = this.md5_ff(y, j, C, S, r[c + 8], 7, 1770035416), S = this.md5_ff(S, y, j, C, r[c + 9], 12, -1958414417), C = this.md5_ff(C, S, y, j, r[c + 10], 17, -42063), j = this.md5_ff(j, C, S, y, r[c + 11], 22, -1990404162), y = this.md5_ff(y, j, C, S, r[c + 12], 7, 1804603682), S = this.md5_ff(S, y, j, C, r[c + 13], 12, -40341101), C = this.md5_ff(C, S, y, j, r[c + 14], 17, -1502002290), j = this.md5_ff(j, C, S, y, r[c + 15], 22, 1236535329), y = this.md5_gg(y, j, C, S, r[c + 1], 5, -165796510), S = this.md5_gg(S, y, j, C, r[c + 6], 9, -1069501632), C = this.md5_gg(C, S, y, j, r[c + 11], 14, 643717713), j = this.md5_gg(j, C, S, y, r[c], 20, -373897302), y = this.md5_gg(y, j, C, S, r[c + 5], 5, -701558691), S = this.md5_gg(S, y, j, C, r[c + 10], 9, 38016083), C = this.md5_gg(C, S, y, j, r[c + 15], 14, -660478335), j = this.md5_gg(j, C, S, y, r[c + 4], 20, -405537848), y = this.md5_gg(y, j, C, S, r[c + 9], 5, 568446438), S = this.md5_gg(S, y, j, C, r[c + 14], 9, -1019803690), C = this.md5_gg(C, S, y, j, r[c + 3], 14, -187363961), j = this.md5_gg(j, C, S, y, r[c + 8], 20, 1163531501), y = this.md5_gg(y, j, C, S, r[c + 13], 5, -1444681467), S = this.md5_gg(S, y, j, C, r[c + 2], 9, -51403784), C = this.md5_gg(C, S, y, j, r[c + 7], 14, 1735328473), j = this.md5_gg(j, C, S, y, r[c + 12], 20, -1926607734), y = this.md5_hh(y, j, C, S, r[c + 5], 4, -378558), S = this.md5_hh(S, y, j, C, r[c + 8], 11, -2022574463), C = this.md5_hh(C, S, y, j, r[c + 11], 16, 1839030562), j = this.md5_hh(j, C, S, y, r[c + 14], 23, -35309556), y = this.md5_hh(y, j, C, S, r[c + 1], 4, -1530992060), S = this.md5_hh(S, y, j, C, r[c + 4], 11, 1272893353), C = this.md5_hh(C, S, y, j, r[c + 7], 16, -155497632), j = this.md5_hh(j, C, S, y, r[c + 10], 23, -1094730640), y = this.md5_hh(y, j, C, S, r[c + 13], 4, 681279174), S = this.md5_hh(S, y, j, C, r[c], 11, -358537222), C = this.md5_hh(C, S, y, j, r[c + 3], 16, -722521979), j = this.md5_hh(j, C, S, y, r[c + 6], 23, 76029189), y = this.md5_hh(y, j, C, S, r[c + 9], 4, -640364487), S = this.md5_hh(S, y, j, C, r[c + 12], 11, -421815835), C = this.md5_hh(C, S, y, j, r[c + 15], 16, 530742520), j = this.md5_hh(j, C, S, y, r[c + 2], 23, -995338651), y = this.md5_ii(y, j, C, S, r[c], 6, -198630844), S = this.md5_ii(S, y, j, C, r[c + 7], 10, 1126891415), C = this.md5_ii(C, S, y, j, r[c + 14], 15, -1416354905), j = this.md5_ii(j, C, S, y, r[c + 5], 21, -57434055), y = this.md5_ii(y, j, C, S, r[c + 12], 6, 1700485571), S = this.md5_ii(S, y, j, C, r[c + 3], 10, -1894986606), C = this.md5_ii(C, S, y, j, r[c + 10], 15, -1051523), j = this.md5_ii(j, C, S, y, r[c + 1], 21, -2054922799), y = this.md5_ii(y, j, C, S, r[c + 8], 6, 1873313359), S = this.md5_ii(S, y, j, C, r[c + 15], 10, -30611744), C = this.md5_ii(C, S, y, j, r[c + 6], 15, -1560198380), j = this.md5_ii(j, C, S, y, r[c + 13], 21, 1309151649), y = this.md5_ii(y, j, C, S, r[c + 4], 6, -145523070), S = this.md5_ii(S, y, j, C, r[c + 11], 10, -1120210379), C = this.md5_ii(C, S, y, j, r[c + 2], 15, 718787259), j = this.md5_ii(j, C, S, y, r[c + 9], 21, -343485551), y = this.safe_add(y, m), j = this.safe_add(j, u), C = this.safe_add(C, b), S = this.safe_add(S, A);
+      for (c = 0; c < r.length; c += 16) m = y, g = j, b = C, A = S, y = this.md5_ff(y, j, C, S, r[c], 7, -680876936), S = this.md5_ff(S, y, j, C, r[c + 1], 12, -389564586), C = this.md5_ff(C, S, y, j, r[c + 2], 17, 606105819), j = this.md5_ff(j, C, S, y, r[c + 3], 22, -1044525330), y = this.md5_ff(y, j, C, S, r[c + 4], 7, -176418897), S = this.md5_ff(S, y, j, C, r[c + 5], 12, 1200080426), C = this.md5_ff(C, S, y, j, r[c + 6], 17, -1473231341), j = this.md5_ff(j, C, S, y, r[c + 7], 22, -45705983), y = this.md5_ff(y, j, C, S, r[c + 8], 7, 1770035416), S = this.md5_ff(S, y, j, C, r[c + 9], 12, -1958414417), C = this.md5_ff(C, S, y, j, r[c + 10], 17, -42063), j = this.md5_ff(j, C, S, y, r[c + 11], 22, -1990404162), y = this.md5_ff(y, j, C, S, r[c + 12], 7, 1804603682), S = this.md5_ff(S, y, j, C, r[c + 13], 12, -40341101), C = this.md5_ff(C, S, y, j, r[c + 14], 17, -1502002290), j = this.md5_ff(j, C, S, y, r[c + 15], 22, 1236535329), y = this.md5_gg(y, j, C, S, r[c + 1], 5, -165796510), S = this.md5_gg(S, y, j, C, r[c + 6], 9, -1069501632), C = this.md5_gg(C, S, y, j, r[c + 11], 14, 643717713), j = this.md5_gg(j, C, S, y, r[c], 20, -373897302), y = this.md5_gg(y, j, C, S, r[c + 5], 5, -701558691), S = this.md5_gg(S, y, j, C, r[c + 10], 9, 38016083), C = this.md5_gg(C, S, y, j, r[c + 15], 14, -660478335), j = this.md5_gg(j, C, S, y, r[c + 4], 20, -405537848), y = this.md5_gg(y, j, C, S, r[c + 9], 5, 568446438), S = this.md5_gg(S, y, j, C, r[c + 14], 9, -1019803690), C = this.md5_gg(C, S, y, j, r[c + 3], 14, -187363961), j = this.md5_gg(j, C, S, y, r[c + 8], 20, 1163531501), y = this.md5_gg(y, j, C, S, r[c + 13], 5, -1444681467), S = this.md5_gg(S, y, j, C, r[c + 2], 9, -51403784), C = this.md5_gg(C, S, y, j, r[c + 7], 14, 1735328473), j = this.md5_gg(j, C, S, y, r[c + 12], 20, -1926607734), y = this.md5_hh(y, j, C, S, r[c + 5], 4, -378558), S = this.md5_hh(S, y, j, C, r[c + 8], 11, -2022574463), C = this.md5_hh(C, S, y, j, r[c + 11], 16, 1839030562), j = this.md5_hh(j, C, S, y, r[c + 14], 23, -35309556), y = this.md5_hh(y, j, C, S, r[c + 1], 4, -1530992060), S = this.md5_hh(S, y, j, C, r[c + 4], 11, 1272893353), C = this.md5_hh(C, S, y, j, r[c + 7], 16, -155497632), j = this.md5_hh(j, C, S, y, r[c + 10], 23, -1094730640), y = this.md5_hh(y, j, C, S, r[c + 13], 4, 681279174), S = this.md5_hh(S, y, j, C, r[c], 11, -358537222), C = this.md5_hh(C, S, y, j, r[c + 3], 16, -722521979), j = this.md5_hh(j, C, S, y, r[c + 6], 23, 76029189), y = this.md5_hh(y, j, C, S, r[c + 9], 4, -640364487), S = this.md5_hh(S, y, j, C, r[c + 12], 11, -421815835), C = this.md5_hh(C, S, y, j, r[c + 15], 16, 530742520), j = this.md5_hh(j, C, S, y, r[c + 2], 23, -995338651), y = this.md5_ii(y, j, C, S, r[c], 6, -198630844), S = this.md5_ii(S, y, j, C, r[c + 7], 10, 1126891415), C = this.md5_ii(C, S, y, j, r[c + 14], 15, -1416354905), j = this.md5_ii(j, C, S, y, r[c + 5], 21, -57434055), y = this.md5_ii(y, j, C, S, r[c + 12], 6, 1700485571), S = this.md5_ii(S, y, j, C, r[c + 3], 10, -1894986606), C = this.md5_ii(C, S, y, j, r[c + 10], 15, -1051523), j = this.md5_ii(j, C, S, y, r[c + 1], 21, -2054922799), y = this.md5_ii(y, j, C, S, r[c + 8], 6, 1873313359), S = this.md5_ii(S, y, j, C, r[c + 15], 10, -30611744), C = this.md5_ii(C, S, y, j, r[c + 6], 15, -1560198380), j = this.md5_ii(j, C, S, y, r[c + 13], 21, 1309151649), y = this.md5_ii(y, j, C, S, r[c + 4], 6, -145523070), S = this.md5_ii(S, y, j, C, r[c + 11], 10, -1120210379), C = this.md5_ii(C, S, y, j, r[c + 2], 15, 718787259), j = this.md5_ii(j, C, S, y, r[c + 9], 21, -343485551), y = this.safe_add(y, m), j = this.safe_add(j, g), C = this.safe_add(C, b), S = this.safe_add(S, A);
       return [y, j, C, S]
     }, N.prototype.binl2rstr = function (r) {
       var a, c = "";
@@ -34409,16 +34430,16 @@ var Yo = {
       return this.binl2rstr(this.binl_md5(this.rstr2binl(r), r.length * 8))
     }, N.prototype.rstr_hmac_md5 = function (r, a) {
       var c, m = this.rstr2binl(r),
-        u = [],
+        g = [],
         b = [],
         A;
-      for (u[15] = b[15] = void 0, m.length > 16 && (m = this.binl_md5(m, r.length * 8)), c = 0; c < 16; c += 1) u[c] = m[c] ^ 909522486, b[c] = m[c] ^ 1549556828;
-      return A = this.binl_md5(u.concat(this.rstr2binl(a)), 512 + a.length * 8), this.binl2rstr(this.binl_md5(b.concat(A), 512 + 128))
+      for (g[15] = b[15] = void 0, m.length > 16 && (m = this.binl_md5(m, r.length * 8)), c = 0; c < 16; c += 1) g[c] = m[c] ^ 909522486, b[c] = m[c] ^ 1549556828;
+      return A = this.binl_md5(g.concat(this.rstr2binl(a)), 512 + a.length * 8), this.binl2rstr(this.binl_md5(b.concat(A), 512 + 128))
     }, N.prototype.rstr2hex = function (r) {
       var a = "0123456789abcdef",
         c = "",
-        m, u;
-      for (u = 0; u < r.length; u += 1) m = r.charCodeAt(u), c += a.charAt(m >>> 4 & 15) + a.charAt(m & 15);
+        m, g;
+      for (g = 0; g < r.length; g += 1) m = r.charCodeAt(g), c += a.charAt(m >>> 4 & 15) + a.charAt(m & 15);
       return c
     }, N.prototype.str2rstr_utf8 = function (r) {
       return unescape(encodeURIComponent(r))
