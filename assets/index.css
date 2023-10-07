@@ -28,10 +28,6 @@ a {
   border-radius: 10%
 }
 
-.boarder-bottom {
-  border-bottom: 2px solid #999999
-}
-
 footer {
   position: fixed;
   bottom: 0;
@@ -105,30 +101,6 @@ arena .middle .left div {
   padding: 3px
 }
 
-arena .middle #fake {
-  grid-row: 1;
-  grid-column: 2;
-  display: grid;
-  grid-template-rows: repeat(8, 1fr);
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: 10px;
-  width: 800px;
-  height: 800px;
-  z-index: 0
-}
-
-arena .middle #fake label {
-  font-family: chess;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1;
-  font-size: 50pt;
-  font-weight: 700;
-  color: transparent;
-  border-radius: 10%
-}
-
 arena .middle #board {
   grid-row: 1;
   grid-column: 2;
@@ -149,7 +121,6 @@ arena .middle #board label {
   aspect-ratio: 1;
   font-size: 50pt;
   font-weight: 700;
-  color: transparent;
   border-radius: 10%
 }
 
@@ -255,15 +226,72 @@ info #status {
   height: 150px
 }
 
-info #status #PHASE h3 {
-  display: inline
+info #status #PHASE {
+  font-size: 30pt;
+  font-weight: 700;
+  width: 100%
+}
+
+info #status #PHASE span {
+  float: left;
+  margin-right: 10px
+}
+
+info #status #PHASE play {
+  margin-left: 50px;
+  float: right
+}
+
+info #status #PHASE play .play {
+  width: 40px;
+  color: #d36a00
+}
+
+info #status #PHASE play .play:hover {
+  color: green
+}
+
+info #status #PHASE play .undo {
+  width: 40px;
+  text-align: right
+}
+
+info #status #PHASE play .undo:hover {
+  color: green;
+  text-align: left
+}
+
+info #status #PHASE play .redo {
+  width: 40px
+}
+
+info #status #PHASE play .redo:hover {
+  color: green;
+  text-align: right
 }
 
 info #status .status {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  padding: 15px
+  margin-top: 30px;
+  width: 100%
+}
+
+info #status .status #PB {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40pt;
+  font-weight: 700;
+  color: #000;
+  border-radius: 100%;
+  outline: 10px #171716 solid;
+  box-shadow: 0 0 15px 12px #ad00ad00;
+  background-color: #fff;
+  font-family: chess;
+  width: 60px;
+  height: 60px
 }
 
 info #status .status button {
@@ -283,26 +311,20 @@ info #status .status button:hover {
   cursor: pointer
 }
 
-info #status .status #PB {
-  font-size: 40pt;
-  font-weight: 700;
-  color: #000;
-  border-radius: 100%;
-  outline: 10px #171716 solid;
-  box-shadow: 0 0 15px 12px #ad00ad;
-  background-color: #fff;
-  font-family: chess
-}
-
 info #status .status #PW {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 40pt;
   font-weight: 700;
   color: #000;
   border-radius: 100%;
   outline: 10px #d1d1d1 solid;
-  box-shadow: 0 0 15px 12px #ad00ad00;
+  box-shadow: 0 0 15px 12px #ad00ad;
   background-color: #fff;
-  font-family: chess
+  font-family: chess;
+  width: 60px;
+  height: 60px
 }
 
 info .online {
@@ -544,7 +566,7 @@ nav {
   color: #fff;
   height: 5000px;
   width: 250px;
-  position: absolute;
+  position: fixed;
   z-index: 3;
   top: 0;
   left: 0;

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
- 
+  
   <script type="module" crossorigin src="/assets/main.js"></script>
   <link rel="stylesheet" href="/assets/index.css">
 </head>
@@ -53,12 +53,23 @@
     </arena>
 
     <info>
-      <div class="boarder-bottom" id="status">
+      <div id="status">
         <div id="PHASE">
-          <h3>Chess</h3>
+          <span>Chess</span>
           <setting style="cursor:pointer">
             ⚙
           </setting>
+          <play>
+            <span class="undo" style="cursor:pointer">
+              ❬
+            </span>
+            <span class="play" style="cursor:pointer">
+              📽
+            </span>
+            <span class="redo" style="cursor:pointer">
+              ❭
+            </span>
+          </play>
 
         </div>
         <div class="status">
@@ -86,25 +97,19 @@
           <unicode-emoji-picker version="15.0" default-group="search" filters-position="left"></unicode-emoji-picker>
           <button class="emoji-button">😀</button>
           <input type="text" class="chat-input" id="message-input" placeholder="Type your message">
-    
+
           <button class="chat-send">Send</button>
         </div>
       </div>
-
-
     </info>
-    
-  </container>
-  
 
+  </container>
 
   <footer>
     <div>
       <p>.Powered by <a href="http://picinfiniti.net/" target="blank">PicInfiniti.</a></p>
     </div>
   </footer>
-
-
-
 </body>
+
 </html>
